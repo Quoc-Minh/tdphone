@@ -15,48 +15,28 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         // Roles
-        Role::create(['name' => 'Admin']);
-        Role::create(['name' => 'Managers']);
-        Role::create(['name' => 'Customers']);
-        Role::create(['name' => 'Technicians']);
-        Role::create(['name' => 'Receptionists']);
+        $roleQL = Role::create(['guard_name' => 'admin', 'name' => 'Quản Lý']);
+        $roleKT = Role::create(['guard_name' => 'admin', 'name' => 'Kỹ Thuật']);
+        $roleLT = Role::create(['guard_name' => 'admin', 'name' => 'Lễ Tân']);
 
         // Permissions
-        Permission::create(['name' => 'Create role']);
-        Permission::create(['name' => 'Edit role']);
-        Permission::create(['name' => 'Delete role']);
-        Permission::create(['name' => 'Create receipt']);
-        Permission::create(['name' => 'Update receipt']);
-        Permission::create(['name' => 'Delete receipt']);
-        Permission::create(['name' => 'Transfer receipt']);
-        Permission::create(['name' => 'Issue an invoice']);
-        Permission::create(['name' => 'Create service']);
-        Permission::create(['name' => 'Update service']);
-        Permission::create(['name' => 'Delete service']);
-        Permission::create(['name' => 'Receipt statistics']);
-        Permission::create(['name' => 'Sale statistics']);
-        Permission::create(['name' => 'Create employee']);
-        Permission::create(['name' => 'Update employee']);
-        Permission::create(['name' => 'Authorization']);
-        Permission::create(['name' => 'Booking']);
-        Permission::create(['name' => 'Update profile']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Thêm loại nhân viên', 'group' => 'Quản lý loại nhân viên']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Cập nhật loại nhân viên', 'group' => 'Quản lý loại nhân viên']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Xóa loại nhân viên', 'group' => 'Quản lý loại nhân viên']);
+
+        Permission::create(['guard_name' => 'admin', 'name' => 'Phân quyền', 'group' => 'Quản lý nhân viên']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Thêm nhân viên', 'group' => 'Quản lý nhân viên']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Xóa nhân viên', 'group' => 'Quản lý nhân viên']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Cập nhật nhân viên', 'group' => 'Quản lý nhân viên']);
+
+        Permission::create(['guard_name' => 'admin', 'name' => 'Tạo phiếu', 'group' => 'Quản lý phiếu']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Chuyển phiếu', 'group' => 'Quản lý phiếu']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Cập nhật phiếu', 'group' => 'Quản lý phiếu']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'Xóa phiếu', 'group' => 'Quản lý phiếu']);
+
+        // Assign role
+        $roleQL->syncPermissions(Permission::all());
+        $roleKT->syncPermissions(['Cập nhật nhân viên', 'Tạo phiếu', 'Chuyển phiếu', 'Cập nhật phiếu']);
+        $roleLT->syncPermissions(['Cập nhật nhân viên', 'Tạo phiếu', 'Cập nhật phiếu']);
     }
 }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        

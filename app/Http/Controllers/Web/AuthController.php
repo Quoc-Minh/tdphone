@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function postSignin(Request $request) {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => ['required', 'max:100', 'email'],
             'password' => ['required'],
         ], [
@@ -22,15 +21,9 @@ class AuthController extends Controller
                 'required' => __('This field is required.'),
             ]
         ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            
-            if(Auth::user()->getRoleNames()->first() == 'Customers') {
-                return redirect('/');
-            } else {
-                return redirect()->route('admin.home');
-            }
+        
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect('/');
         }
         
         return back()->withErrors([

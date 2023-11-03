@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\NhanVien;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -18,16 +18,14 @@ class AdminSeeder extends Seeder
     {
         
         // create roles and assign existing permissions
-        $role = Role::create(['name' => 'Super Admin']);
+        $role = Role::create(['guard_name' => 'admin', 'name' => 'Super Admin']);
 
-        Permission::create(['name' => 'sign in to admin']);
-
-        $role->givePermissionTo('sign in to admin');
-
-        $user = User::create([
-            'name' => 'SuperAdmin',
+        $user = NhanVien::create([
+            'ten' => 'SuperAdmin',
             'email' => 'superadmin@gmail.com',
-            'phone' => '0123456789',
+            'sodienthoai' => '0123456789',
+            'diachi' => '180 Cao Lo',
+            'avatar' => fake()->imageUrl(),
             'password' => Hash::make('admin123'),
         ]);
 

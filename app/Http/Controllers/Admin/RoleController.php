@@ -29,8 +29,8 @@ class RoleController extends Controller
         }
         
         $role->save();
-
-        return redirect()->route('admin.roles')->with('success', __('Created role successfully'));
+        // toast('');
+        return redirect()->back()->with('toast_success', __('Created role successfully'));
     }
 
     public function update($id, Request $request) {
@@ -41,12 +41,16 @@ class RoleController extends Controller
         }
 
         $role->save();
-
+        
         return redirect()->route('admin.roles')->with('success', __('Updated role successfully'));
     }
 
     public function delete($id) {
         $role = Role::find($id);
+
+        $title = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
 
         if ($role->users->count() > 0) {
             return redirect()->route('admin.roles')->with('danger', __('At least one user is assigning this role'));
@@ -55,8 +59,8 @@ class RoleController extends Controller
         $result = $role->delete();
 
         if (!$result) {
-            return redirect()->route('admin.roles')->with('danger', __('Deleted role failure'));
+            return redirect()->route('admin.roles')->with('toast_danger', __('Deleted role failure'));
         }
-        return redirect()->route('admin.roles')->with('success', __('Deleted role successfully'));
+        return redirect()->route('admin.roles')->with('toast_success', __('Deleted role successfully'));
     }
 }

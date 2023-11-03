@@ -14,11 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = \App\Models\User::factory(10)->create();
-
-        foreach($users as $user) {
-            $user->assignRole('Customers');
-        }
+        // $users = \App\Models\NhanVien::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

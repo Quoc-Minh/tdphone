@@ -29,6 +29,7 @@ class CreatePermissionTables extends Migration
             $table->bigIncrements('id'); // permission id
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+            $table->string('group'); // For MySQL 8.0 use string('group', 125);
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
@@ -71,7 +72,6 @@ class CreatePermissionTables extends Migration
                 $table->primary([PermissionRegistrar::$pivotPermission, $columnNames['model_morph_key'], 'model_type'],
                     'model_has_permissions_permission_model_type_primary');
             }
-            $table->foreign('model_id')->references('id')->on('users');
         });
 
         Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames, $columnNames, $teams) {
@@ -95,7 +95,6 @@ class CreatePermissionTables extends Migration
                 $table->primary([PermissionRegistrar::$pivotRole, $columnNames['model_morph_key'], 'model_type'],
                 'model_has_roles_role_model_type_primary');
             }
-            $table->foreign('model_id')->references('id')->on('users');
         });
 
         Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames) {

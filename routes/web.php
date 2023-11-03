@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\EmployeeController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\FrontendController;
-use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Web\AuthController;
+use App\Http\Controllers\Web\FrontendController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -38,21 +36,10 @@ Route::middleware('localization')->group(function () {
     Route::get('/signup', [FrontendController::class, 'signup'])->name('signup');
     Route::get('/signin', [FrontendController::class, 'signin'])->name('signin');
 
-    Route::prefix('/admin')->middleware(['auth', 'permission:sign in to admin'])->group(function () {
-        Route::post('/employees', [EmployeeController::class, 'create'])->name('admin.employees.create');
-        Route::get('/employees', [FrontendController::class, 'employees'])->name('admin.employees');
-
-        Route::get('/roles/{id}/delete', [RoleController::class, 'delete'])->name('admin.roles.delete');
-        Route::post('/roles/{id}/update', [RoleController::class, 'update'])->name('admin.roles.update');
-        Route::post('/roles', [RoleController::class, 'create'])->name('admin.roles.create');
-        Route::get('/roles', [FrontendController::class, 'roles'])->name('admin.roles');
-
-        Route::get('/', [FrontendController::class, 'home'])->name('admin.home');
+    Route::middleware(['auth'])->group(function () {
     });
 
-    Route::get('/', function () {
-        return view('web.pages.home');
-    });
+    Route::get('/', [FrontendController::class, 'home'])->name('home');
 });
 
 

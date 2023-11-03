@@ -1,3 +1,6 @@
+@php
+  $prefix = Route::current()->getPrefix()
+@endphp
 <!doctype html>
 <!--
 * Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
@@ -38,7 +41,7 @@
         @if(Session('language') == 'en') <span class="flag flag-sm flag-country-us ms-2"></span> @else <span class="flag flag-sm flag-country-vn ms-2"></span> @endif
       </a>
     </div>
-
+    
     <div class="page page-center">
       <div class="container container-normal py-4">
         <div class="row align-items-center g-4">
@@ -49,17 +52,18 @@
               </div>
               <div class="card card-md">
                 <div class="card-body">
-                  <h2 class="h2 text-center mb-4">{{__('Login to your account')}}</h2>
-                  <form action="{{ route('signin.post') }}" method="POST" autocomplete="off" >
+                  <h2 class="h2 text-center mb-4">{{ __('Login to your account') }}</h2>
+                  <form action="{{ ($prefix == 'admin') ? route('admin.signin.post') : route('signin.post') }}" 
+                        method="POST" autocomplete="off" >
                     @csrf
                     <div class="mb-3">
-                      <label class="form-label">{{__('Email')}}</label>
+                      <label class="form-label">{{ __('Email') }}</label>
                       <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="your@example.com" autocomplete="off">
                       @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                     <div class="mb-2">
                       <label class="form-label">
-                       {{__('Password')}}
+                       {{ __('Password') }}
                         <span class="form-label-description">
                           <a href="/forgot-password">{{__('I forgot password')}}</a>
                         </span>

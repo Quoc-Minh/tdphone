@@ -12,7 +12,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>{{__('Sign up')}} - tdphone</title>
+    <title>{{ __('Sign up') }} - tdphone</title>
     <!-- CSS files -->
     <link href="{{ asset('assets/admin/dist/css/tabler.css?1684106062') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/admin/dist/css/tabler-flags.css?1684106062') }}" rel="stylesheet"/>
@@ -30,7 +30,6 @@
     </style>
   </head>
   <body  class=" d-flex flex-column">
-    {{-- <script src="{{ asset('assets/admin/dist/js/demo-theme.js?1684106062') }}"></script> --}}
 
     {{-- Change languages --}}
     <div class="d-flex justify-content-end p-3">
