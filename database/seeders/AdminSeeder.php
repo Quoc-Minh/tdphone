@@ -16,11 +16,12 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         // create roles and assign existing permissions
-        $role = Role::create(['guard_name' => 'admin', 'name' => 'Super Admin']);
+        $role = Role::create(['guard_name' => 'admin', 'name' => 'Super Admin', 'short_name' => 'SA']);
 
         $user = NhanVien::create([
+            'manv' => 'superadmin',
             'ten' => 'SuperAdmin',
             'email' => 'superadmin@gmail.com',
             'sodienthoai' => '0123456789',

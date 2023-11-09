@@ -10,19 +10,23 @@ use Spatie\Permission\Models\Role;
 
 class FrontendController extends Controller
 {
-    public function home() {
+    public function home()
+    {
         return view('admin.pages.home');
     }
-    
-    public function signin() {
+
+    public function signin()
+    {
         return view('authentication.signin');
     }
 
-    public function signup() {
+    public function signup()
+    {
         return view('authentication.signup');
     }
 
-    public function roles() {
+    public function roles()
+    {
         $roles = Role::where('name', '!=', 'Super Admin')->get();
         $permissions = Permission::all();
         $groups = Permission::select('group as name')->groupBy('group')->get();
@@ -33,17 +37,19 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function employees() {
+    public function employees()
+    {
         $users = Nhanvien::where('ten', '!=', 'SuperAdmin')->get();
         $roles = Role::where('name', '!=', 'Super Admin')->get();
-        return view('admin.pages.Employees.employees', [
+        return view('admin.pages.Employees.main', [
             'users' => $users,
             'roles' => $roles
         ]);
     }
 
-    public function profile() {
-        return view ('admin.pages.profile', [
+    public function profile()
+    {
+        return view('admin.pages.profile', [
             'user' => Auth::user()
         ]);
     }

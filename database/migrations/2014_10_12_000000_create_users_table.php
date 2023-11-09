@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,12 +12,14 @@ return new class extends Migration
     {
         Schema::create('nhanvien', function (Blueprint $table) {
             $table->id();
+            $table->string('manv', 10)->unique();
             $table->string('ten', 50);
             $table->string('email', 100)->unique();
             $table->string('sodienthoai', 11)->unique();
             $table->string('diachi', 255)->nullable();
             $table->text('avatar')->nullable();
             $table->string('password', 60);
+            $table->boolean('trangthai')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -35,6 +36,7 @@ return new class extends Migration
 
         Schema::create('khachhang', function (Blueprint $table) {
             $table->id();
+            $table->string('makh', 8);
             $table->string('ten', 50);
             $table->string('email', 100)->unique();
             $table->string('sodienthoai', 11)->unique();

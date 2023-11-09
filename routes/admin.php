@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ComponentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\FrontendController;
@@ -43,13 +45,30 @@ Route::middleware('localization')->group(function () {
         Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('admin.password.post');
         Route::get('/profile', [FrontendController::class, 'profile'])->name('admin.profile');
 
-        //Employee
+        //Components
+        Route::get('/components/{id}/delete', [ComponentController::class, 'destroy'])->name('admin.components.delete');
+        Route::post('/components/{id}/update', [ComponentController::class, 'update'])->name('admin.components.update');
+        Route::get('/components/{id}/edit', [ComponentController::class, 'edit'])->name('admin.components.edit');
+        Route::post('/components', [ComponentController::class, 'store'])->name('admin.components.store');
+        Route::get('/components/create', [ComponentController::class, 'create'])->name('admin.components.create');
+        Route::get('/components', [ComponentController::class, 'index'])->name('admin.components');
+
+        //Services
+        Route::get('/services/{id}/delete', [ServiceController::class, 'destroy'])->name('admin.services.delete');
+        Route::post('/services/{id}/update', [ServiceController::class, 'update'])->name('admin.services.update');
+        Route::get('/services/{id}/edit', [ServiceController::class, 'edit'])->name('admin.services.edit');
+        Route::post('/services', [ServiceController::class, 'store'])->name('admin.services.store');
+        Route::get('/services/create', [ServiceController::class, 'create'])->name('admin.services.create');
+        Route::get('/services', [ServiceController::class, 'index'])->name('admin.services');
+
+        //Employees
         Route::get('/employees/{id}/delete', [EmployeeController::class, 'delete'])->name('admin.employees.delete');
         Route::post('/employees/{id}/update', [EmployeeController::class, 'update'])->name('admin.employees.update');
-        Route::post('/employees', [EmployeeController::class, 'create'])->name('admin.employees.create');
-        Route::get('/employees', [FrontendController::class, 'employees'])->name('admin.employees');
+        Route::post('/employees', [EmployeeController::class, 'store'])->name('admin.employees.create.post');
+        Route::get('/employees/create', [EmployeeController::class, 'create'])->name('admin.employees.create');
+        Route::get('/employees', [EmployeeController::class, 'index'])->name('admin.employees');
 
-        //Role
+        //Roles
         Route::get('/roles/{id}/delete', [RoleController::class, 'delete'])->name('admin.roles.delete');
         Route::post('/roles/{id}/update', [RoleController::class, 'update'])->name('admin.roles.update');
         Route::post('/roles', [RoleController::class, 'create'])->name('admin.roles.create');

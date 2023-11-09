@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function postSignin(Request $request) {
+    public function postSignin(Request $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'max:100', 'email'],
             'password' => ['required'],
@@ -22,17 +23,18 @@ class AuthController extends Controller
                 'required' => __('This field is required.'),
             ]
         ]);
-        
-        if (Auth::guard('admin')->attempt(['email' => $request->email , 'password' => $request->password])) {
+        $credentials = Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]);
+        if ($credentials) {
             return redirect()->route('admin.home');
         }
-        
+
         return back()->withErrors([
             'email' => __('The provided credentials do not match our records.'),
         ])->onlyInput('email');
     }
 
-    public function postSignup(Request $request) {
+    public function postSignup(Request $request)
+    {
         $request->validate([
             'name' => ['required', 'max:50'],
             'email' => ['required', 'max:100', 'email', 'unique:users'],
@@ -52,17 +54,18 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->assignRole('Customer');    
+        $user->assignRole('Customer');
 
         if (!$user) {
             return redirect()->route('admin.signup')->with('danger', 'It have error when sign up!');
         }
 
-        
+
         return redirect()->route('admin.signin');
     }
 
-    public function signout() {
+    public function signout()
+    {
         Auth::guard('admin')->logout();
 
         return redirect()->route('admin.signin');

@@ -26,6 +26,7 @@ class Khachhang extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'makh',
         'ten',
         'email',
         'sodienthoai',
