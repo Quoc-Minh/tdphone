@@ -9,7 +9,7 @@
                     <h2 class="page-title text-uppercase">
                         {{ __('Employees') }}
                         @can('thêm nhân viên')
-                            <button class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#modal-create">
+                            <a class="btn btn-primary ms-auto" href="{{ route('admin.employees.create') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                      stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -17,7 +17,7 @@
                                     <line x1="5" y1="12" x2="19" y2="12"/>
                                 </svg>
                                 {{ __('CREATE') }}
-                            </button>
+                            </a>
                         @endcan
                     </h2>
                 </div>
@@ -33,9 +33,9 @@
             <div class="row row-cards">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">{{ __('Employees') }}</h4>
-                        </div>
+                        {{--                        <div class="card-header">--}}
+                        {{--                            <h4 class="card-title">{{ __('Employees') }}</h4>--}}
+                        {{--                        </div>--}}
                         <div class="card-body">
                             <div id="table-roles" class="table-responsive">
                                 <table class="table">
@@ -62,6 +62,9 @@
                                         <th>
                                             <button class="table-sort" data-sort="sort-address">{{ __('address') }}</button>
                                         </th>
+                                        <th>
+                                            <button class="table-sort" data-sort="sort-address">{{ __('status') }}</button>
+                                        </th>
                                         <!-- <th><button class="table-sort" data-sort="sort-created">{{ __('created_at') }}</button></th>
                             <th><button class="table-sort" data-sort="sort-updated">{{ __('updated_at') }}</button></th> -->
                                         <th></th>
@@ -78,6 +81,22 @@
                                             <td class="sort-email">{{ $user->email }}</td>
                                             <td class="sort-phone">{{ $user->sodienthoai }}</td>
                                             <td class="sort-address">{{ $user->diachi }}</td>
+                                            <td class="sort-status">
+                                                @switch($user->trangthai)
+                                                    @case(0)
+                                                        <span class="badge bg-dark-subtle me-1"></span>
+                                                        {{ __('locked') }}
+                                                        @break
+                                                    @case(1)
+                                                        <span class="badge bg-success me-1"></span>
+                                                        {{ __('working') }}
+                                                        @break
+                                                    @default
+                                                        <span class="badge bg-danger me-1"></span>
+                                                        {{ __('retired') }}
+                                                        @break
+                                                @endswitch
+                                            </td>
                                             <!-- <td class="sort-created" data-date="{{ strtotime($user->created_at) }}">{{ $user->created_at }}</td>
                               <td class="sort-updated" data-date="{{ strtotime($user->updated_at) }}">{{ $user->updated_at }}</td> -->
                                             @can('cập nhật nhân viên')
@@ -96,59 +115,12 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    @can('thêm nhân viên')
-        {{-- Modal create --}}
-        <div class="modal modal-blur fade" id="modal-create" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">{{ __('Create role') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="{{ Route('admin.employees.create') }}" method="POST">
-                        @csrf
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label class="form-label required">{{ __('Name') }}</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" aria-label="name" placeholder="{{ __('Enter name') }}...">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label required">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" aria-label="email" name="email" placeholder="Enter email...">
-                                @error('email')
-                                <div class="invalid-feedback">{{ $message }}</div> @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label required">{{ __('Phone') }}</label>
-                                <input type="text" class="form-control @error('phone') is-invalid @enderror" aria-label="phone" name="phone" placeholder="Enter phone...">
-                                @error('phone')
-                                <div class="invalid-feedback">{{ $message }}</div> @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">{{ __('Roles') }}</label>
-                                <select class="form-select" name="role" aria-label="Role">
-                                    @foreach($roles as $role)
-                                        <option value="{{ __($role->name) }}">{{ __($role->name) }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    @endcan
     @can('Cập nhật nhân viên')
         {{-- Modal update --}}
         @foreach($users as $user)

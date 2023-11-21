@@ -39,7 +39,7 @@
                                     <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label required">{{ __('Phone') }}</label>
+                                    <label class="form-label required">{{ __('Phone number') }}</label>
                                     <input type="text" class="form-control @error('phone') is-invalid @enderror" aria-label="phone" name="phone" placeholder="Enter phone...">
                                     @error('phone')
                                     <div class="invalid-feedback">{{ $message }}</div> @enderror

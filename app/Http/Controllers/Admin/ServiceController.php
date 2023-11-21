@@ -50,7 +50,9 @@ class ServiceController extends Controller
 
         $service = Dichvu::create([
             'ten' => $request->name,
-            'gia' => $request->price,
+            'giadv' => $request->servicePrice,
+            'giacong' => $request->fixPrice,
+            'baohanh' => $request->warranty,
             'mota' => $request->description
         ]);
 
@@ -107,7 +109,9 @@ class ServiceController extends Controller
 
         $result = $service->update([
             'ten' => $request->name,
-            'gia' => $request->price,
+            'giadv' => $request->servicePrice,
+            'giacong' => $request->fixPrice,
+            'baohanh' => $request->warranty,
             'mota' => $request->description
         ]);
 

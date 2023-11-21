@@ -11,12 +11,13 @@
         </form>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="project.html" class="nav-link">Project</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item text-nowrap @yield('home')"><a href="/" class="nav-link">{{ __('Home') }}</a></li>
+                <li class="nav-item text-nowrap @yield('services')"><a href="{{ route('services') }}" class="nav-link">{{ __('Services') }}</a></li>
+                <li class="nav-item text-nowrap @yield('booking')"><a href="{{ route('booking') }}" class="nav-link">{{ __('Booking') }}</a></li>
+                <li class="nav-item text-nowrap @yield('blogs')"><a href="{{ route('blogs') }}" class="nav-link">{{ __('Blogs') }}</a></li>
+                <li class="nav-item text-nowrap @yield('about')"><a href="{{ route('about') }}" class="nav-link">{{ __('About') }}</a></li>
+                <li class="nav-item text-nowrap @yield('warranty')"><a href="{{ route('warranty') }}" class="nav-link">{{ __('Warranty Status') }}</a></li>
+                <li class="nav-item text-nowrap @yield('contact')"><a href="{{ route('contact') }}" class="nav-link">{{ __('Contact') }}</a></li>
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ComponentController;
 use App\Http\Controllers\Admin\EmployeeController;
@@ -45,6 +46,15 @@ Route::middleware('localization')->group(function () {
         Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('admin.password.post');
         Route::get('/profile', [FrontendController::class, 'profile'])->name('admin.profile');
 
+        //Receipts
+        Route::get('/receipts/{id}/delete', [ReceiptController::class, 'destroy'])->name('admin.receipts.delete');
+        Route::post('/receipts/{id}/update', [ReceiptController::class, 'update'])->name('admin.receipts.update');
+        Route::get('/receipts/{id}/edit', [ReceiptController::class, 'edit'])->name('admin.receipts.edit');
+        Route::get('/receipts/{id}/show', [ReceiptController::class, 'show'])->name('admin.receipts.show');
+        Route::post('/receipts', [ReceiptController::class, 'store'])->name('admin.receipts.store');
+        Route::get('/receipts/create', [ReceiptController::class, 'create'])->name('admin.receipts.create');
+        Route::get('/receipts', [ReceiptController::class, 'index'])->name('admin.receipts');
+
         //Components
         Route::get('/components/{id}/delete', [ComponentController::class, 'destroy'])->name('admin.components.delete');
         Route::post('/components/{id}/update', [ComponentController::class, 'update'])->name('admin.components.update');
@@ -64,6 +74,7 @@ Route::middleware('localization')->group(function () {
         //Employees
         Route::get('/employees/{id}/delete', [EmployeeController::class, 'delete'])->name('admin.employees.delete');
         Route::post('/employees/{id}/update', [EmployeeController::class, 'update'])->name('admin.employees.update');
+        Route::post('/employees/change-avatar', [EmployeeController::class, 'changeAvatar'])->name('admin.employees.change-avatar');
         Route::post('/employees', [EmployeeController::class, 'store'])->name('admin.employees.create.post');
         Route::get('/employees/create', [EmployeeController::class, 'create'])->name('admin.employees.create');
         Route::get('/employees', [EmployeeController::class, 'index'])->name('admin.employees');

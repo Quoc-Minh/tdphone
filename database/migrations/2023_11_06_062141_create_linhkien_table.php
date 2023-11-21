@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->integer('gia')->default(0);
             $table->integer('soluong')->default(0);
             $table->string('mota', 255)->nullable();
-            $table->boolean('trangthai')->default(true);
+            $table->integer('trangthai')->comment('0: ngung hoat dong; 1: con hang; 2: het hang')->default(0);
             $table->timestamps();
         });
     }

@@ -25,7 +25,7 @@
                         <div class="card-header">
                             <h4 class="card-title">
                                 {{ __('Edit service') }}
-                                <div class="vr"></div>
+                                <div class="vr mx-2"></div>
                                 {{ $service->ten }}
                             </h4>
                         </div>
@@ -39,10 +39,27 @@
                                      }}...">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('Price') }}</label>
-                                    <input type="number" value="{{ $service->gia }}" min="0" class="form-control @error('price') is-invalid @enderror" aria-label="price" name="price"
-                                           placeholder="Enter price...">
+                                    <label class="form-label">{{ __('Service price') }}</label>
+                                    <input type="number" value="{{ $service->giadv }}" min="0" class="form-control @error('servicePrice') is-invalid @enderror" aria-label="Service Price"
+                                           name="servicePrice"
+                                           placeholder="Enter service price...">
                                     @error('price')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">{{ __('Fix price') }}</label>
+                                    <input type="number" value="{{ $service->giacong }}" min="0" class="form-control @error('fixPrice') is-invalid @enderror" aria-label="fixPrice" name="fixPrice"
+                                           placeholder="Enter fix price...">
+                                    @error('fixprice')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">{{ __('Warranty (month)') }}</label>
+                                    <input type="number" value="{{ $service->giacong }}" min="0" class="form-control @error('warranty') is-invalid @enderror" aria-label="warranty" name="warranty"
+                                           placeholder="Enter warranty...">
+                                    @error('warranty')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

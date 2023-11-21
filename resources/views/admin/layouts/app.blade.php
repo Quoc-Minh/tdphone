@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>TDPhone - Admin</title>
+    <title class="d-print-none">TDPhone - Admin</title>
     <!-- CSS files -->
     <link href="{{ asset('assets/admin/dist/css/tabler.min.css?1684106062') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/admin/dist/css/tabler-flags.min.css?1684106062') }}" rel="stylesheet"/>
@@ -34,9 +34,11 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
+    <link href="{{ asset('assets/admin/dist/css/demo.min.css?1684106062')}}" rel="stylesheet"/>
 </head>
 
-<body>
+<body class=" layout-fluid">
+<script src="{{ asset('assets/admin/dist/js/demo-theme.min.js?1684106062')}}"></script>
 @include('sweetalert::alert')
 <div class="page">
     <!-- Sidebar -->
@@ -50,6 +52,9 @@
 
         {{-- Page body --}}
         @yield('page-body')
+
+        {{-- Footer --}}
+        @include('admin.common.footer')
     </div>
 </div>
 <!-- Libs JS -->
@@ -57,6 +62,9 @@
 <!-- Tabler Core -->
 <script src="{{ asset('assets/admin/dist/js/tabler.min.js?1684106062') }}" defer></script>
 <script src="{{ asset('assets/admin/dist/js/demo.min.js?1684106062') }}" defer></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
 @yield('js')
 
 </body>

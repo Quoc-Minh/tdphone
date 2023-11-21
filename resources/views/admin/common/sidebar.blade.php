@@ -1,11 +1,11 @@
-<aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+<aside class="navbar navbar-vertical navbar-expand-lg d-print-none" data-bs-theme="dark">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
-            <a href=".">
-                <img src="{{ asset('assets/admin/static/logo.svg') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+            <a href="/admin">
+                TDPhone - Admin
             </a>
         </h1>
         <div class="navbar-nav flex-row d-lg-none">
@@ -158,19 +158,15 @@
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                    <span class="avatar avatar-sm" style="background-image: url({{ asset('assets/admin/static/avatars/000m.jpg') }})"></span>
+                    <span class="avatar avatar-sm" style="background-image: url({{ asset(Auth::user()->avatar) }})"></span>
                     <div class="d-none d-xl-block ps-2">
-                        <div>Paweł Kuna</div>
-                        <div class="mt-1 small text-muted">UI Designer</div>
+                        <div>{{ Auth::user()->ten }}</div>
+                        <div class="mt-1 small text-muted">{{ Auth::user()->getRoleNames()->first() }}</div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <a href="#" class="dropdown-item">Status</a>
-                    <a href="./profile.html" class="dropdown-item">Profile</a>
-                    <a href="#" class="dropdown-item">Feedback</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="./settings.html" class="dropdown-item">Settings</a>
-                    <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                    <a href="{{ route('admin.profile') }}" class="dropdown-item">Profile</a>
+                    <a href="{{ route('admin.signout') }}" class="dropdown-item link-danger">Sign out</a>
                 </div>
             </div>
         </div>
@@ -187,7 +183,7 @@
                                 <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/>
                             </svg>
                         </span>
-                        <span class="nav-link-title">Home</span>
+                        <span class="nav-link-title">{{ __('Home') }}</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -211,7 +207,7 @@
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
                                 <a class="dropdown-item" href="{{ route('admin.employees') }}">{{ __('List of employee') }}</a>
-                                {{--<a class="dropdown-item" href="{{ route('admin.roles') }}">{{ __('Roles') }}</a>--}}
+                                <a class="dropdown-item" href="{{ route('admin.roles') }}">{{ __('Roles') }}</a>
                                 @can('Tạo nhân viên')
                                     <a class="dropdown-item" href="{{ route('admin.employees.create') }}">
                                         {{ __('Create employee') }}
@@ -288,9 +284,9 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="#">{{ __('List of receipt') }}</a>
+                                <a class="dropdown-item" href="{{ route('admin.receipts') }}">{{ __('List of receipt') }}</a>
                                 @can('Tạo phiếu')
-                                    <a class="dropdown-item" href="#">{{ __('Add receipt') }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.receipts.create') }}">{{ __('Add receipt') }}</a>
                                 @endcan
                             </div>
                         </div>

@@ -25,7 +25,7 @@
                         <div class="card-header">
                             <h4 class="card-title">
                                 {{ __('Edit component') }}
-                                <div class="vr"></div>
+                                <div class="vr mx-2"></div>
                                 {{ $component->ten }}
                             </h4>
                         </div>

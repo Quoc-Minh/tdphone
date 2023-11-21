@@ -33,9 +33,25 @@
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" aria-label="name" placeholder="{{ __('Enter name') }}...">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('Price') }}</label>
-                                    <input type="number" min="0" class="form-control @error('price') is-invalid @enderror" aria-label="price" name="price" placeholder="Enter price...">
-                                    @error('price')
+                                    <label class="form-label">{{ __('Service price') }}</label>
+                                    <input type="number" min="0" class="form-control @error('servicePrice') is-invalid @enderror" aria-label="servicePrice" name="servicePrice"
+                                           placeholder="Enter service price...">
+                                    @error('servicePrice')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">{{ __('Fix price') }}</label>
+                                    <input type="number" min="0" class="form-control @error('fixPrice') is-invalid @enderror" aria-label="Fix Price" name="fixPrice"
+                                           placeholder="Enter fix price...">
+                                    @error('fixPrice')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">{{ __('Warranty') }} ({{ __('month') }})</label>
+                                    <input type="number" min="0" class="form-control @error('warranty') is-invalid @enderror" aria-label="warranty" name="warranty" placeholder="Enter warranty...">
+                                    @error('warranty')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

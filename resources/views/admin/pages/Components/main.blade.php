@@ -45,13 +45,13 @@
                                             <button class="table-sort" data-sort="sort-number">#</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-name">{{ __('ten') }}</button>
+                                            <button class="table-sort" data-sort="sort-name">{{ __('Name') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-price">{{ __('gia') }}</button>
+                                            <button class="table-sort" data-sort="sort-price">{{ __('Price') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-desc">{{ __('mota') }}</button>
+                                            <button class="table-sort" data-sort="sort-desc">{{ __('Description') }}</button>
                                         </th>
                                         <!-- <th><button class="table-sort" data-sort="sort-created">{{ __('created_at') }}</button></th>
                                              <th><button class="table-sort" data-sort="sort-updated">{{ __('updated_at') }}</button></th> -->

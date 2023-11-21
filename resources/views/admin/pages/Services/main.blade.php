@@ -45,13 +45,19 @@
                                             <button class="table-sort" data-sort="sort-number">#</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-name">{{ __('ten') }}</button>
+                                            <button class="table-sort" data-sort="sort-name">{{ __('Name') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-price">{{ __('gia') }}</button>
+                                            <button class="table-sort" data-sort="sort-price">{{ __('Service price') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-desc">{{ __('mota') }}</button>
+                                            <button class="table-sort" data-sort="sort-price">{{ __('Fix price') }}</button>
+                                        </th>
+                                        <th>
+                                            <button class="table-sort" data-sort="sort-warranty">{{ __('Warranty') }}</button>
+                                        </th>
+                                        <th>
+                                            <button class="table-sort" data-sort="sort-desc">{{ __('Description') }}</button>
                                         </th>
                                         <!-- <th><button class="table-sort" data-sort="sort-created">{{ __('created_at') }}</button></th>
                                              <th><button class="table-sort" data-sort="sort-updated">{{ __('updated_at') }}</button></th> -->
@@ -64,7 +70,9 @@
                                         <tr>
                                             <td class="sort-number">{{ $key+1 }}</td>
                                             <td class="sort-name">{{ $service->ten }}</td>
-                                            <td class="sort-price">{{ $service->gia }}</td>
+                                            <td class="sort-price">{{ $service->giadv }}</td>
+                                            <td class="sort-price">{{ $service->giacong }}</td>
+                                            <td class="sort-price">{{ $service->baohanh }}</td>
                                             <td class="sort-desc">{{ $service->mota }}</td>
                                             <!-- <td class="sort-created" data-date="{{ strtotime($service->created_at) }}">{{ $service->created_at }}</td>
                                                  <td class="sort-updated" data-date="{{ strtotime($service->updated_at) }}">{{ $service->updated_at }}</td> -->

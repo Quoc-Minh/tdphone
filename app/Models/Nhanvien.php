@@ -54,4 +54,9 @@ class Nhanvien extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function phieu()
+    {
+        return $this->belongsToMany(Phieu::class, 'xuliphieu', 'manv', 'maphieu')->as('xuliphieu')->withPivot(['ghichu', 'trangthai', 'updated_at']);
+    }
 }

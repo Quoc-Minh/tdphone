@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dichvu extends Model
+class Lichhen extends Model
 {
     use HasFactory;
 
-    protected $table = "dichvu";
+    protected $table = 'lichhen';
 
     protected $fillable = [
-        'ten',
-        'giadv',
-        'giacong',
-        'baohanh',
-        'mota',
+        'tenkhachhang',
+        'sodienthoai',
+        'email',
+        'ngayhen',
+        'thoigianhen',
+        'ghichu',
         'trangthai'
     ];
 }

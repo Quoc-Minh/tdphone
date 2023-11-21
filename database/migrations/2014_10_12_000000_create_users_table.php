@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('diachi', 255)->nullable();
             $table->text('avatar')->nullable();
             $table->string('password', 60);
-            $table->boolean('trangthai')->default(true);
+            $table->integer('trangthai')->default(1)->comment('0: khóa; 1: hoạt động; 2: nghỉ việc');
             $table->rememberToken();
             $table->timestamps();
         });

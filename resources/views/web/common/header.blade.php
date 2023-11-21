@@ -10,13 +10,13 @@
                     <div class="col">
                         <div class="top-wrap d-flex">
                             <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-location-arrow"></span></div>
-                            <div class="text"><span>Address</span><span>180 Cao Lỗ, P.4, Q.8, TPHCM</span></div>
+                            <div class="text"><span>{{ __('Address') }}</span><span>180 Cao Lỗ, P.4, Q.8, TPHCM</span></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="top-wrap d-flex">
                             <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-location-arrow"></span></div>
-                            <div class="text"><span>Call us</span><span>(+01) 123 456 7890</span></div>
+                            <div class="text"><span>{{ __('Call us') }}</span><span>(+01) 123 456 7890</span></div>
                         </div>
                     </div>
                     <div class="col-md-3 d-flex justify-content-end align-items-center">
