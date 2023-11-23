@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('imei', 100);
             $table->json('tinhtrangmay')->nullable();
             $table->text('ghichu')->nullable();
-            $table->dateTime('thoigiannhan')->default(date('Y-d-m H:i'));
+            $table->dateTime('thoigiannhan')->default(date('Y-d-m H:i:s'));
             $table->dateTime('thoigianhentra');
             $table->dateTime('thoigiansuaxong')->nullable();
             $table->dateTime('thoigiantra')->nullable();
@@ -41,7 +41,7 @@ return new class extends Migration {
             $table->foreign('manv')->references('id')->on('nhanvien');
             $table->string('ghichu', 255)->nullable();
             $table->integer('trangthai')->default(0);
-            $table->dateTime('updated_at')->default(date('Y-d-m H:i'));
+            $table->dateTime('updated_at')->default(date('Y-d-m H:i:s'));
         });
     }
 
