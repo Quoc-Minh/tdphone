@@ -25,12 +25,17 @@
                         <div class="card-header">
                             <h4 class="card-title">{{ __('Create service') }}</h4>
                         </div>
-                        <form action="{{ Route('admin.services.store') }}" method="POST">
+                        <form action="{{ Route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 @csrf
                                 <div class="mb-3">
                                     <label class="form-label required">{{ __('Name') }}</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" aria-label="name" placeholder="{{ __('Enter name') }}...">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">{{ __('Image') }}</label>
+                                    <img id="thumbnail" src="{{ asset('assets/admin/images/noimage.webp') }}" class="border object-fit-cover" style="width: 330px; height: 330px" alt="thumbnail">
+                                    <input id="thumbnail-input" type="file" class="form-control" name="thumbnail" aria-label="thumbnail">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">{{ __('Service price') }}</label>
@@ -80,4 +85,19 @@
 @endsection
 
 @section('js')
+    <script>
+        $('#thumbnail-input').on('change', function () {
+            console.log(this.files);
+            if (this.files && this.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#thumbnail')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
 @endsection

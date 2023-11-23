@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Dichvu;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Spatie\Permission\Models\Role;
 
 class ServiceController extends Controller
 {
@@ -35,6 +35,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'max:50'],
         ], [
@@ -48,15 +49,27 @@ class ServiceController extends Controller
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        $service = Dichvu::create([
-            'ten' => $request->name,
-            'giadv' => $request->servicePrice,
-            'giacong' => $request->fixPrice,
-            'baohanh' => $request->warranty,
-            'mota' => $request->description
-        ]);
+        try {
+            DB::beginTransaction();
 
-        if (!$service) {
+            $service = new Dichvu([
+                'ten' => $request->name,
+                'giadv' => $request->servicePrice,
+                'giacong' => $request->fixPrice,
+                'baohanh' => $request->warranty,
+                'mota' => $request->description
+            ]);
+
+            $service->save();
+//        dd(!$request->hasFile('thumbnail'));
+            if ($request->hasFile('thumbnail')) {
+                $path = Storage::putFileAs(
+                    '/assets/admin/images/services', $request->file('thumbnail'), $service->id . '10.webp'
+                );
+                $service->update(['hinh' => $path]);
+            }
+        } catch (\Exception $e) {
+            DB::rollBack();
             return redirect()->route('admin.services')->with('toast_error', __('Create service fail'));
         }
 
@@ -90,10 +103,15 @@ class ServiceController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'max:50'],
+            'image' => ['image', 'mimes:jpg,png,jpeg']
         ], [
             'name' => [
                 'required' => __('The name field is required.'),
                 'max' => __('max 50')
+            ],
+            'image' => [
+                'image' => __('Please choose file image'),
+                'mimes' => __('Incorrect image format (only jpg, png, jpeg)')
             ]
         ]);
 

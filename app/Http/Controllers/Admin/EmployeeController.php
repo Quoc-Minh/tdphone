@@ -121,7 +121,7 @@ class EmployeeController extends Controller
         $user = Auth::guard('admin')->user();
 
         if (!$request->hasFile('avatar')) {
-            return redirect()->back()->with('toast_error', __('Mời chọn file cần upload'));
+            return redirect()->back()->with('toast_error', __('vui lòng chọn hình ảnh cần thay đổi'));
         }
 
         $validator = Validator::make($request->all(), [
@@ -140,7 +140,7 @@ class EmployeeController extends Controller
 //        dd($request->file('avatar'));
 
         $path = Storage::putFileAs(
-            '/assets/admin/images/avatars', $request->file('avatar'), $user->manv . '.webp'
+            '/assets/admin/images/avatars', $request->file('avatar'), $user->manv . '10.webp'
         );
         $user->avatar = $path;
         $user->save();

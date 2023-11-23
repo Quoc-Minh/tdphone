@@ -14,54 +14,21 @@
                 </div>
             </div>
             <div class="row d-flex">
-                <div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20 rounded" style="background-image: url(http://tdphone.com/assets/web/images/image_1.jpg);">
-                        </a>
-                        <div class="text mt-3">
-                            <div class="posted mb-3 d-flex">
-                                <div class="img author" style="background-image: url(http://tdphone.com/assets/web/images/person_2.jpg);"></div>
-                                <div class="desc pl-3">
-                                    <span>Posted by John doe</span>
-                                    <span>24 February 2020</span>
-                                </div>
+                @foreach($services as $key => $service)
+                    <div class="col-6 col-lg-3 d-flex ftco-animate fadeInUp ftco-animated">
+                        <div class="blog-entry align-self-stretch w-100">
+                            <a href="#" class="block-20 rounded" style="background-image: url({{ file_exists($service->hinh) ? asset($service->hinh) : 'assets/admin/images/noimage.webp' }});">
+                            </a>
+                            <div class="text mt-3">
+                                <h3 class="heading"><a href="#">{{ __($service->ten) }}</a></h3>
                             </div>
-                            <h3 class="heading"><a href="#">Best wheel alignment &amp; air conditioning</a></h3>
+                            <div class="text mt-2 mb-3">
+                                <h3 class="heading"><a href="#">{{ __($service->giadv) }}</a></h3>
+                            </div>
+                            <button class="btn btn-primary w-100">{{ __('See') }}</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20 rounded" style="background-image: url(http://tdphone.com/assets/web/images/image_2.jpg);">
-                        </a>
-                        <div class="text mt-3">
-                            <div class="posted mb-3 d-flex">
-                                <div class="img author" style="background-image: url(http://tdphone.com/assets/web/images/person_3.jpg);"></div>
-                                <div class="desc pl-3">
-                                    <span>Posted by John doe</span>
-                                    <span>24 February 2020</span>
-                                </div>
-                            </div>
-                            <h3 class="heading"><a href="#">Best wheel alignment &amp; air conditioning</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20 rounded" style="background-image: url(http://tdphone.com/assets/web/images/image_3.jpg);">
-                        </a>
-                        <div class="text mt-3">
-                            <div class="posted mb-3 d-flex">
-                                <div class="img author" style="background-image: url(http://tdphone.com/assets/web/images/person_1.jpg);"></div>
-                                <div class="desc pl-3">
-                                    <span>Posted by John doe</span>
-                                    <span>24 February 2020</span>
-                                </div>
-                            </div>
-                            <h3 class="heading"><a href="#">Best wheel alignment &amp; air conditioning</a></h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

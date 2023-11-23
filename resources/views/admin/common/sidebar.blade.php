@@ -242,6 +242,9 @@
                                         {{ __('Add service') }}
                                     </a>
                                 @endcan
+                                <a class="dropdown-item" href="{{ route('admin.categories') }}">
+                                    {{ __('Categories') }}
+                                </a>
                             </div>
                         </div>
                     </div>

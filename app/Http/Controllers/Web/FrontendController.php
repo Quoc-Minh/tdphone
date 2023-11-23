@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dichvu;
 use App\Models\NhanVien;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -31,7 +32,10 @@ class FrontendController extends Controller
 
     public function services()
     {
-        return view('web.pages.services');
+        $services = Dichvu::all();
+        return view('web.pages.services', [
+            'services' => $services
+        ]);
     }
 
     public function blogs()

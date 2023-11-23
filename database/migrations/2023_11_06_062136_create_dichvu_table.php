@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('loaidichvu', function (Blueprint $table) {
+        Schema::create('danhmuc', function (Blueprint $table) {
             $table->id();
             $table->string('ten', 100);
             $table->bigInteger('danhmuccha')->nullable()->default(null);
@@ -20,6 +20,7 @@ return new class extends Migration {
         Schema::create('dichvu', function (Blueprint $table) {
             $table->id();
             $table->string('ten', 100);
+            $table->text('hinh')->nullable();
             $table->double('giadv')->default(0);
             $table->double('giacong')->default(0);
             $table->integer('baohanh')->comment('số tháng')->default(0);

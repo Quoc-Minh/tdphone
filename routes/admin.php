@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ComponentController;
@@ -70,6 +71,14 @@ Route::middleware('localization')->group(function () {
         Route::post('/services', [ServiceController::class, 'store'])->name('admin.services.store');
         Route::get('/services/create', [ServiceController::class, 'create'])->name('admin.services.create');
         Route::get('/services', [ServiceController::class, 'index'])->name('admin.services');
+
+        //Categories
+        Route::get('/categories/{id}/delete', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
+        Route::post('/categories/{id}/update', [CategoryController::class, 'update'])->name('admin.categories.update');
+        Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+        Route::post('/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
+        Route::get('/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+        Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
 
         //Employees
         Route::get('/employees/{id}/delete', [EmployeeController::class, 'delete'])->name('admin.employees.delete');

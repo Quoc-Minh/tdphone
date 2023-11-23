@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('linhkien', function (Blueprint $table) {
             $table->id();
             $table->string('ten', 100);
+            $table->text('hinh')->nullable();
             $table->integer('gia')->default(0);
             $table->integer('soluong')->default(0);
             $table->string('mota', 255)->nullable();
