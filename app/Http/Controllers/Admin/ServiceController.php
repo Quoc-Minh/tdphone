@@ -68,6 +68,8 @@ class ServiceController extends Controller
                 );
                 $service->update(['hinh' => $path]);
             }
+
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->route('admin.services')->with('toast_error', __('Create service fail'));
