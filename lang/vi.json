@@ -112,5 +112,6 @@
     "Parent category": "Danh mục cha",
     "Parent ID": "ID Danh mục cha",
     "Categories": "Danh mục",
-    "categories": "danh mục"
+    "categories": "danh mục",
+    "Receipt exist, can't delete": "Tồn tại phiếu. Không thể xóa"
 }

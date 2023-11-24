@@ -20,4 +20,9 @@ class Dichvu extends Model
         'mota',
         'trangthai'
     ];
+
+    public function phieu()
+    {
+        return $this->belongsToMany(Phieu::class, 'phieu_dichvu', 'madv', 'maphieu');
+    }
 }

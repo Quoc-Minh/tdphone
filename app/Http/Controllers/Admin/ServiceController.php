@@ -149,6 +149,10 @@ class ServiceController extends Controller
     {
         $service = Dichvu::find($id);
 
+        if ($service->phieu->count() > 0) {
+            return redirect()->back()->with('toast_error', __("Receipt exist, can't delete"));
+        }
+
         if (!$service) {
             return redirect()->back()->with('toast_error', __('Not found service.'));
         }
