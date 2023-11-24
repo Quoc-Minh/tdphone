@@ -25,7 +25,7 @@
                         <div class="card-header">
                             <h4 class="card-title">{{ __('Create employee account') }}</h4>
                         </div>
-                        <form action="{{ Route('admin.employees.create') }}" method="POST">
+                        <form action="{{ Route('admin.employees.store') }}" method="POST">
                             <div class="card-body">
                                 @csrf
                                 <div class="mb-3">

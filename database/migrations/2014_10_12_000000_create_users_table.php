@@ -24,16 +24,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('thongtinnhanvien', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('manv')->unsigned();
-            $table->foreign('manv')->references('id')->on('nhanvien');
-            $table->date('ngaysinh');
-            $table->date('ngaythamgia');
-            $table->integer('luong');
-            $table->timestamps();
-        });
-
         Schema::create('khachhang', function (Blueprint $table) {
             $table->id();
             $table->string('makh', 8);

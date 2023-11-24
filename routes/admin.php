@@ -52,7 +52,7 @@ Route::middleware('localization')->group(function () {
         Route::post('/receipts/{id}/update', [ReceiptController::class, 'update'])->name('admin.receipts.update');
         Route::get('/receipts/{id}/edit', [ReceiptController::class, 'edit'])->name('admin.receipts.edit');
         Route::get('/receipts/{id}/show', [ReceiptController::class, 'show'])->name('admin.receipts.show');
-        Route::post('/receipts', [ReceiptController::class, 'store'])->name('admin.receipts.store');
+        Route::post('/receipts/create', [ReceiptController::class, 'store'])->name('admin.receipts.store');
         Route::get('/receipts/create', [ReceiptController::class, 'create'])->name('admin.receipts.create');
         Route::get('/receipts', [ReceiptController::class, 'index'])->name('admin.receipts');
 
@@ -60,7 +60,7 @@ Route::middleware('localization')->group(function () {
         Route::get('/components/{id}/delete', [ComponentController::class, 'destroy'])->name('admin.components.delete');
         Route::post('/components/{id}/update', [ComponentController::class, 'update'])->name('admin.components.update');
         Route::get('/components/{id}/edit', [ComponentController::class, 'edit'])->name('admin.components.edit');
-        Route::post('/components', [ComponentController::class, 'store'])->name('admin.components.store');
+        Route::post('/components/create', [ComponentController::class, 'store'])->name('admin.components.store');
         Route::get('/components/create', [ComponentController::class, 'create'])->name('admin.components.create');
         Route::get('/components', [ComponentController::class, 'index'])->name('admin.components');
 
@@ -68,7 +68,7 @@ Route::middleware('localization')->group(function () {
         Route::get('/services/{id}/delete', [ServiceController::class, 'destroy'])->name('admin.services.delete');
         Route::post('/services/{id}/update', [ServiceController::class, 'update'])->name('admin.services.update');
         Route::get('/services/{id}/edit', [ServiceController::class, 'edit'])->name('admin.services.edit');
-        Route::post('/services', [ServiceController::class, 'store'])->name('admin.services.store');
+        Route::post('/services/create', [ServiceController::class, 'store'])->name('admin.services.store');
         Route::get('/services/create', [ServiceController::class, 'create'])->name('admin.services.create');
         Route::get('/services', [ServiceController::class, 'index'])->name('admin.services');
 
@@ -84,7 +84,7 @@ Route::middleware('localization')->group(function () {
         Route::get('/employees/{id}/delete', [EmployeeController::class, 'delete'])->name('admin.employees.delete');
         Route::post('/employees/{id}/update', [EmployeeController::class, 'update'])->name('admin.employees.update');
         Route::post('/employees/change-avatar', [EmployeeController::class, 'changeAvatar'])->name('admin.employees.change-avatar');
-        Route::post('/employees', [EmployeeController::class, 'store'])->name('admin.employees.create.post');
+        Route::post('/employees/create', [EmployeeController::class, 'store'])->name('admin.employees.store');
         Route::get('/employees/create', [EmployeeController::class, 'create'])->name('admin.employees.create');
         Route::get('/employees', [EmployeeController::class, 'index'])->name('admin.employees');
 
