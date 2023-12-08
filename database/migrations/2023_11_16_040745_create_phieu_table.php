@@ -28,17 +28,17 @@ return new class extends Migration {
         Schema::create('phieu_dichvu', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('maphieu')->unsigned();
-            $table->foreign('maphieu')->references('id')->on('phieu');
+            $table->foreign('maphieu')->references('id')->on('phieu')->onDelete('cascade');
             $table->bigInteger('madv')->unsigned();
-            $table->foreign('madv')->references('id')->on('dichvu');
+            $table->foreign('madv')->references('id')->on('dichvu')->onDelete('cascade');
         });
 
         Schema::create('xuliphieu', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('maphieu')->unsigned();
-            $table->foreign('maphieu')->references('id')->on('phieu');
+            $table->foreign('maphieu')->references('id')->on('phieu')->onDelete('cascade');
             $table->bigInteger('manv')->unsigned();
-            $table->foreign('manv')->references('id')->on('nhanvien');
+            $table->foreign('manv')->references('id')->on('nhanvien')->onDelete('cascade');
             $table->string('ghichu', 255)->nullable();
             $table->integer('trangthai')->default(0);
             $table->dateTime('updated_at')->default(today());

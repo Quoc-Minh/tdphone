@@ -56,8 +56,8 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('Warranty (month)') }}</label>
-                                    <input type="number" value="{{ $service->giacong }}" min="0" class="form-control @error('warranty') is-invalid @enderror" aria-label="warranty" name="warranty"
+                                    <label class="form-label">{{ __('Warranty') }} ({{ __('month') }})</label>
+                                    <input type="number" value="{{ $service->baohanh }}" min="0" class="form-control @error('warranty') is-invalid @enderror" aria-label="warranty" name="warranty"
                                            placeholder="Enter warranty...">
                                     @error('warranty')
                                     <div class="invalid-feedback">{{ $message }}</div>

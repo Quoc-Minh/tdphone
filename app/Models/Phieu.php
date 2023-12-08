@@ -33,4 +33,9 @@ class Phieu extends Model
     {
         return $this->belongsToMany(Dichvu::class, 'phieu_dichvu', 'maphieu', 'madv');
     }
+
+    public function xlphieu()
+    {
+        return $this->hasMany(Xuliphieu::class, 'maphieu', 'id');
+    }
 }

@@ -32,9 +32,11 @@ class ReceiptController extends Controller
      */
     public function create()
     {
+        $receipts = Dichvu::all();
         $services = Dichvu::all();
 
         return view('admin.pages.Receipts.create', [
+            'receipts' => $receipts,
             'services' => $services
         ]);
     }
@@ -94,7 +96,7 @@ class ReceiptController extends Controller
             $services = Dichvu::find($request->services);
             $user = Auth::guard('admin')->user();
             $receipt->dichvu()->attach($services);
-            $receipt->nhanvien()->attach($user, ['trangthai' => 0, 'updated_at' => today()]);
+            $receipt->nhanvien()->attach($user, ['trangthai' => 0, 'updated_at' => date('Y-m-d H:i:s')]);
 
 
             DB::commit();
@@ -112,7 +114,7 @@ class ReceiptController extends Controller
     public function show(string $id)
     {
         $receipt = Phieu::find($id);
-        return view('admin.pages.Receipts.detail', [
+        return view('admin.pages.Receipts.process.steps', [
             'receipt' => $receipt
         ]);
     }
@@ -124,11 +126,11 @@ class ReceiptController extends Controller
     {
         $receipt = Phieu::find($id);
         $conditions = json_decode($receipt->tinhtrangmay);
-        dd($conditions);
         $services = Dichvu::all();
         return view('admin.pages.receipts.edit', [
             'receipt' => $receipt,
-            'services' => $services
+            'services' => $services,
+            'conditions' => $conditions
         ]);
     }
 
@@ -145,6 +147,57 @@ class ReceiptController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $receipt = Phieu::find($id);
+
+        if ($receipt->dichvu->count() > 0) {
+            return redirect()->back()->with('toast_error', __("Service exist, can't delete"));
+        }
+
+        if (!$receipt) {
+            return redirect()->back()->with('toast_error', __('Not found receipt.'));
+        }
+
+        $result = $receipt->delete();
+
+        if (!$result) {
+            return redirect()->back()->with('toast_error', __('Delete receipt fail.'));
+        }
+
+        return redirect()->back()->with('success', __('Delete receipt success.'));
+    }
+
+    public function step(string $id)
+    {
+        $receipt = Phieu::find($id);
+        return view('admin.pages.Receipts.process.steps', [
+            'receipt' => $receipt
+        ]);
+    }
+
+    public function repairStart(string $id)
+    {
+        $receipt = Phieu::find($id);
+        $user = Auth::guard('admin')->user();
+        $receipt->nhanvien()->attach($user, ['trangthai' => 1, 'updated_at' => date('Y-m-d H:i:s')]);
+
+        return redirect()->back();
+    }
+
+    public function repairCompleted(string $id)
+    {
+        $receipt = Phieu::find($id);
+        $user = Auth::guard('admin')->user();
+        $receipt->nhanvien()->attach($user, ['trangthai' => 2, 'updated_at' => date('Y-m-d H:i:s')]);
+
+        return redirect()->back();
+    }
+
+    public function issueInvoice(string $id)
+    {
+        $receipt = Phieu::find($id);
+        $user = Auth::guard('admin')->user();
+        $receipt->nhanvien()->attach($user, ['trangthai' => 3, 'updated_at' => date('Y-m-d H:i:s')]);
+
+        return redirect()->back();
     }
 }

@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
     <link rel="stylesheet" href="{{ asset('assets/web/css/animate.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/web/css/owl.carousel.min.css') }}">
@@ -45,7 +46,6 @@
     </svg>
 </div>
 
-
 <script src="{{ asset('assets/web/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/web/js/jquery-migrate-3.0.1.min.js') }}"></script>
 <script src="{{ asset('assets/web/js/popper.min.js') }}"></script>
@@ -62,7 +62,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{{ asset('assets/web/js/google-map.js') }}"></script>
 <script src="{{ asset('assets/web/js/main.js') }}"></script>
-
 </body>
 
 </html>

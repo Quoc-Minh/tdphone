@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Danhmuc;
 use App\Models\Dichvu;
 use App\Models\NhanVien;
 use Spatie\Permission\Models\Permission;
@@ -33,8 +34,10 @@ class FrontendController extends Controller
     public function services()
     {
         $services = Dichvu::all();
+        $categories = Danhmuc::all();
         return view('web.pages.services', [
-            'services' => $services
+            'services' => $services,
+            'categories' => $categories
         ]);
     }
 

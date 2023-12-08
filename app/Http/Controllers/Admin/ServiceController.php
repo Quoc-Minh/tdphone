@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Danhmuc;
 use App\Models\Dichvu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.services.create');
+        $categories = Danhmuc::all();
+        return view('admin.pages.services.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -57,7 +61,8 @@ class ServiceController extends Controller
                 'giadv' => $request->servicePrice,
                 'giacong' => $request->fixPrice,
                 'baohanh' => $request->warranty,
-                'mota' => $request->description
+                'mota' => $request->description,
+                'madanhmuc' => $request->category
             ]);
 
             $service->save();
@@ -132,7 +137,8 @@ class ServiceController extends Controller
             'giadv' => $request->servicePrice,
             'giacong' => $request->fixPrice,
             'baohanh' => $request->warranty,
-            'mota' => $request->description
+            'mota' => $request->description,
+            'madanhmuc' => $request->category
         ]);
 
         if (!$result) {

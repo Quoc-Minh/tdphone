@@ -18,11 +18,17 @@ class Dichvu extends Model
         'giacong',
         'baohanh',
         'mota',
-        'trangthai'
+        'trangthai',
+        'madanhmuc'
     ];
 
     public function phieu()
     {
         return $this->belongsToMany(Phieu::class, 'phieu_dichvu', 'madv', 'maphieu');
+    }
+
+    public function danhmuc()
+    {
+        return $this->belongsTo(Danhmuc::class, 'madanhmuc', 'id');
     }
 }

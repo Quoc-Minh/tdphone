@@ -8,7 +8,7 @@
                 <div class="col">
                     <h2 class="page-title text-uppercase">
                         {{ __('Receipt') }} - {{ $receipt->id }}
-                        <div class="vr"></div> {{ __('Edit') }}
+                        <div class="vr mx-2"></div> {{ __('Edit') }}
                     </h2>
                 </div>
             </div>
@@ -20,7 +20,7 @@
     <!-- Page body -->
     <div class="page-body">
         <div class="container-xl">
-            <form action="{{ route('admin.receipts.store') }}" method="POST">
+            <form action="{{ route('admin.receipts.update', ['id' => $receipt->id]) }}" method="POST">
                 @csrf
                 <div class="row row-cards">
                     <div class="col-7">
@@ -58,7 +58,7 @@
                                     <label class="form-label">Services</label>
                                     <select class="form-select" id="select-services" multiple aria-label="services" name="services[]">
                                         @foreach($services as $key => $service)
-                                            <option value="{{$service->id}}">{{ $service->ten }}</option>
+                                            <option value="{{$service->id}}" @if($receipt->dichvu->contains('id', $service->id)) selected @endif>{{ $service->ten }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -73,10 +73,17 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label required">{{ __('Estimated time to return the device') }}</label>
-                                    <input type="date" value="{{ $receipt->thoigianhentra }}" min="{{date('Y-m-d')}}" class="form-control @error('returntime') is-invalid @enderror"
-                                           aria-label="returntime"
-                                           name="returntime"
-                                           placeholder="Enter ruturn time...">
+                                    <div class="input-icon mb-2">
+                                        <input class="form-control @error('returntime') is-invalid @enderror" name="returntime"
+                                               placeholder="Select a date" id="datepicker-icon" value="{{ $receipt->thoigianhentra }}"
+                                               aria-label="return date"/>
+                                        <span class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                 stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                                    d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M4 11h16"/><path
+                                                    d="M11 15h1"/><path d="M12 15v3"/></svg>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label required">{{ __('Notes') }}</label>
@@ -99,85 +106,88 @@
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Screen') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="screen" class="form-control @error('screen') is-invalid @enderror" aria-label="screen">
+                                        <input type="text" value="{{ $conditions->{'Screen'} }}" name="screen" class="form-control @error('screen') is-invalid @enderror" aria-label="screen">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Glass / Touch') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="glass" class="form-control @error('glass') is-invalid @enderror" aria-label="glass">
+                                        <input type="text" value="{{ $conditions->{'Glass / Touch'} }}" name="glass" class="form-control @error('glass') is-invalid @enderror" aria-label="glass">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Wifi / Bluetooth / NFC / GPS') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="connection" class="form-control @error('connection') is-invalid @enderror" aria-label="connection">
+                                        <input type="text" value="{{ $conditions->{'Wifi / Bluetooth / NFC / GPS'} }}" name="connection" class="form-control @error('connection') is-invalid @enderror"
+                                               aria-label="connection">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Signal 2G / 3G') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" class="form-control @error('name') is-invalid @enderror" aria-label="signal">
+                                        <input type="text" value="{{ $conditions->{'Signal 2G / 3G'} }}" class="form-control @error('name') is-invalid @enderror" aria-label="signal">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Rom / SDCard') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="rom" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Rom / SDCard'} }}" name="rom" class="form-control @error('name') is-invalid @enderror" aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Camera / Flash') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="camera" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Camera / Flash'} }}" name="camera" class="form-control @error('name') is-invalid @enderror" aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Speaker / Micro / Vibration') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="sound" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Speaker / Micro / Viration'} }}" name="sound" class="form-control @error('name') is-invalid @enderror"
+                                               aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Proximity sensor / Rotation') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="sensor" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Proximity sensor'} }}" name="sensor" class="form-control @error('name') is-invalid @enderror" aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Fingerprint Sensor / FaceID') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="fingerprint" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Fingerprint Sensor'} }}" name="fingerprint" class="form-control @error('name') is-invalid @enderror"
+                                               aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Physical button') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="button" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Physical button'} }}" name="button" class="form-control @error('name') is-invalid @enderror" aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Appearance') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="appearance" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Appearance'} }}" name="appearance" class="form-control @error('name') is-invalid @enderror" aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Other') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="other" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Other'} }}" name="other" class="form-control @error('name') is-invalid @enderror" aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Icloud (Apple)') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="icloud" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Icloud (Apple)'} }}" name="icloud" class="form-control @error('name') is-invalid @enderror" aria-label="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-6 col-form-label text-nowrap">{{ __('Password (PIN)') }}</label>
                                     <div class="col">
-                                        <input type="text" value="Bình thường" name="pin" class="form-control @error('name') is-invalid @enderror" aria-label="email">
+                                        <input type="text" value="{{ $conditions->{'Password (PIN)'} }}" name="pin" class="form-control @error('name') is-invalid @enderror" aria-label="email">
                                     </div>
                                 </div>
                             </div>
@@ -192,6 +202,7 @@
 
 @section('Libs')
     <script src="{{ asset('assets/admin/dist/libs/list.js/dist/list.js?1684106062') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
     <script src="{{ asset('assets/admin/dist/libs/tom-select/dist/js/tom-select.base.min.js?1684106062') }}" defer></script>
 @endsection
 
@@ -208,6 +219,7 @@
             });
         })
     </script>
+
     <script>
         // @formatter:off
         document.addEventListener("DOMContentLoaded", function () {
@@ -234,4 +246,42 @@
         });
         // @formatter:on
     </script>
+
+    <script>
+        const picker = new easepick.create({
+            element: "#datepicker-icon",
+            css: [
+                "https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css"
+            ],
+            lang: 'vi-VN',
+            zIndex: 10,
+            format: "YYYY-MM-DD HH:mm",
+            locale: {
+                previousMonth: `<svg width="11" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M7.919 0l2.748 2.667L5.333 8l5.334 5.333L7.919 16 0 8z" fill-rule="nonzero"/></svg>`,
+                nextMonth: `<svg width="11" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M2.748 16L0 13.333 5.333 8 0 2.667 2.748 0l7.919 8z" fill-rule="nonzero"/></svg>`
+            },
+            AmpPlugin: {
+                locale: {
+                    resetButton: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>`
+                },
+                resetButton: true
+            },
+            PresetPlugin: {
+                position: 'right'
+            },
+            LockPlugin: {
+                minDate: Date(),
+                minDays: 0
+            },
+            TimePlugin: {
+                stepSeconds: 60
+            },
+            plugins: [
+                "AmpPlugin",
+                "LockPlugin",
+                "TimePlugin"
+            ]
+        })
+    </script>
 @endsection
+

@@ -94,7 +94,7 @@
                         <tr>
                             <td colspan="3" class="strong text-end">{{ __('Fix total') }}</td>
                             <td class="text-end">
-                                {{ Helper::currency_format($service->sum('giacong')) }}
+                                {{ Helper::currency_format($receipt->dichvu->sum('giacong')) }}
                             </td>
                         </tr>
                         {{--                        <tr>--}}
@@ -110,7 +110,7 @@
                                 {{ __ ('Total') }}
                             </td>
                             <td class="font-weight-bold text-end">
-                                {{ Helper::currency_format($service->sum('giacong') + $service->sum('giadv')) }}
+                                {{ Helper::currency_format($receipt->dichvu->sum('giacong') + $receipt->dichvu->sum('giadv')) }}
                             </td>
                         </tr>
                     </table>

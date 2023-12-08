@@ -26,6 +26,8 @@ return new class extends Migration {
             $table->integer('baohanh')->comment('số tháng')->default(0);
             $table->string('mota', 255)->nullable();
             $table->integer('trangthai')->comment('0: ngừng hoạt động; 1: hoạt động')->default(0);
+            $table->bigInteger('madanhmuc')->unsigned();
+            $table->foreign('madanhmuc')->references('id')->on('danhmuc');
             $table->timestamps();
         });
     }

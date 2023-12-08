@@ -54,7 +54,8 @@
                                     </tr>
                                     </thead>
                                     <tbody class="table-tbody align-middle">
-                                    @include('admin.pages.Services.Categories.recursive', ['categories' => $categories])
+                                    @each('admin.pages.Services.Categories.recursive', $categories, 'category')
+                                    {{--                                    @include('admin.pages.Services.Categories.recursive', ['categories' => $categories])--}}
                                     </tbody>
                                 </table>
                             </div>
@@ -102,7 +103,7 @@
 
 @section('js')
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener(" DOMContentLoaded", function () {
             const list = new List('table-roles', {
                 sortClass: 'table-sort',
                 listClass: 'table-tbody',

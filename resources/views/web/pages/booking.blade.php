@@ -13,23 +13,6 @@
                     <form action="{{ route('booking.post') }}" class="appointment" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="form-field">
-                                        <div class="select-wrap">
-                                            <div class="icon"><span class="fa fa-chevron-down"></span></div>
-                                            <select name="" id="" class="form-control" aria-label="">
-                                                <option value="">Select services</option>
-                                                <option value="">Change Oil</option>
-                                                <option value="">Engine Repair</option>
-                                                <option value="">Battery Replace</option>
-                                                <option value="">Change Tire</option>
-                                                <option value="">Tow Truck</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="name" placeholder="{{ __('Your Name') }}" aria-label="name">

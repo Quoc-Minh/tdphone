@@ -38,6 +38,14 @@
                                     <input id="thumbnail-input" type="file" class="form-control" name="thumbnail" aria-label="thumbnail">
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label">{{ __('Category') }}</label>
+                                    <select class="form-control @error('category') is-invalid @enderror" aria-label="servicePrice" name="category">
+                                        @foreach($categories as $key => $category)
+                                            <option value="{{$category->id}}">{{$category->ten}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label">{{ __('Service price') }}</label>
                                     <input type="number" min="0" class="form-control @error('servicePrice') is-invalid @enderror" aria-label="servicePrice" name="servicePrice"
                                            placeholder="Enter service price...">

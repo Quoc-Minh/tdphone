@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -47,7 +48,19 @@ Route::middleware('localization')->group(function () {
         Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('admin.password.post');
         Route::get('/profile', [FrontendController::class, 'profile'])->name('admin.profile');
 
+        //Appointments
+        Route::get('/appointments/{id}/delete', [AppointmentController::class, 'destroy'])->name('admin.appointments.delete');
+        Route::post('/appointments/{id}/update', [AppointmentController::class, 'update'])->name('admin.appointments.update');
+        Route::get('/appointments/{id}/edit', [AppointmentController::class, 'edit'])->name('admin.appointments.edit');
+        Route::post('/appointments/create', [AppointmentController::class, 'store'])->name('admin.appointments.store');
+        Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('admin.appointments.create');
+        Route::get('/appointments', [AppointmentController::class, 'index'])->name('admin.appointments');
+
         //Receipts
+        Route::get('/receipts/{id}/issueinvoice', [ReceiptController::class, 'issueInvoice'])->name('admin.receipts.issueinvoice');
+        Route::get('/receipts/{id}/repaircompleted', [ReceiptController::class, 'repairCompleted'])->name('admin.receipts.repaircompleted');
+        Route::get('/receipts/{id}/repairstart', [ReceiptController::class, 'repairStart'])->name('admin.receipts.repairstart');
+        Route::get('/receipts/{id}/step', [ReceiptController::class, 'step'])->name('admin.receipts.step');
         Route::get('/receipts/{id}/delete', [ReceiptController::class, 'destroy'])->name('admin.receipts.delete');
         Route::post('/receipts/{id}/update', [ReceiptController::class, 'update'])->name('admin.receipts.update');
         Route::get('/receipts/{id}/edit', [ReceiptController::class, 'edit'])->name('admin.receipts.edit');
