@@ -96,103 +96,103 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-5">
-                        {{-- Tình trạng máy --}}
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">{{ __('Phone conditions') }}</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Screen') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Screen'} }}" name="screen" class="form-control @error('screen') is-invalid @enderror" aria-label="screen">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Glass / Touch') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Glass / Touch'} }}" name="glass" class="form-control @error('glass') is-invalid @enderror" aria-label="glass">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Wifi / Bluetooth / NFC / GPS') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Wifi / Bluetooth / NFC / GPS'} }}" name="connection" class="form-control @error('connection') is-invalid @enderror"
-                                               aria-label="connection">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Signal 2G / 3G') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Signal 2G / 3G'} }}" class="form-control @error('name') is-invalid @enderror" aria-label="signal">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Rom / SDCard') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Rom / SDCard'} }}" name="rom" class="form-control @error('name') is-invalid @enderror" aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Camera / Flash') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Camera / Flash'} }}" name="camera" class="form-control @error('name') is-invalid @enderror" aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Speaker / Micro / Vibration') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Speaker / Micro / Viration'} }}" name="sound" class="form-control @error('name') is-invalid @enderror"
-                                               aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Proximity sensor / Rotation') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Proximity sensor'} }}" name="sensor" class="form-control @error('name') is-invalid @enderror" aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Fingerprint Sensor / FaceID') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Fingerprint Sensor'} }}" name="fingerprint" class="form-control @error('name') is-invalid @enderror"
-                                               aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Physical button') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Physical button'} }}" name="button" class="form-control @error('name') is-invalid @enderror" aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Appearance') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Appearance'} }}" name="appearance" class="form-control @error('name') is-invalid @enderror" aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Other') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Other'} }}" name="other" class="form-control @error('name') is-invalid @enderror" aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Icloud (Apple)') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Icloud (Apple)'} }}" name="icloud" class="form-control @error('name') is-invalid @enderror" aria-label="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label class="col-6 col-form-label text-nowrap">{{ __('Password (PIN)') }}</label>
-                                    <div class="col">
-                                        <input type="text" value="{{ $conditions->{'Password (PIN)'} }}" name="pin" class="form-control @error('name') is-invalid @enderror" aria-label="email">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {{--                    <div class="col-5">--}}
+                    {{--                        --}}{{-- Tình trạng máy --}}
+                    {{--                        <div class="card">--}}
+                    {{--                            <div class="card-header">--}}
+                    {{--                                <h4 class="card-title">{{ __('Phone conditions') }}</h4>--}}
+                    {{--                            </div>--}}
+                    {{--                            <div class="card-body">--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Screen') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Screen'} }}" name="screen" class="form-control @error('screen') is-invalid @enderror" aria-label="screen">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Glass / Touch') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Glass / Touch'} }}" name="glass" class="form-control @error('glass') is-invalid @enderror" aria-label="glass">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Wifi / Bluetooth / NFC / GPS') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Wifi / Bluetooth / NFC / GPS'} }}" name="connection" class="form-control @error('connection') is-invalid @enderror"--}}
+                    {{--                                               aria-label="connection">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Signal 2G / 3G') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Signal 2G / 3G'} }}" class="form-control @error('name') is-invalid @enderror" aria-label="signal">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Rom / SDCard') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Rom / SDCard'} }}" name="rom" class="form-control @error('name') is-invalid @enderror" aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Camera / Flash') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Camera / Flash'} }}" name="camera" class="form-control @error('name') is-invalid @enderror" aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Speaker / Micro / Vibration') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Speaker / Micro / Viration'} }}" name="sound" class="form-control @error('name') is-invalid @enderror"--}}
+                    {{--                                               aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Proximity sensor / Rotation') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Proximity sensor'} }}" name="sensor" class="form-control @error('name') is-invalid @enderror" aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Fingerprint Sensor / FaceID') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Fingerprint Sensor'} }}" name="fingerprint" class="form-control @error('name') is-invalid @enderror"--}}
+                    {{--                                               aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Physical button') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Physical button'} }}" name="button" class="form-control @error('name') is-invalid @enderror" aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Appearance') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Appearance'} }}" name="appearance" class="form-control @error('name') is-invalid @enderror" aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Other') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Other'} }}" name="other" class="form-control @error('name') is-invalid @enderror" aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Icloud (Apple)') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Icloud (Apple)'} }}" name="icloud" class="form-control @error('name') is-invalid @enderror" aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="mb-3 row">--}}
+                    {{--                                    <label class="col-6 col-form-label text-nowrap">{{ __('Password (PIN)') }}</label>--}}
+                    {{--                                    <div class="col">--}}
+                    {{--                                        <input type="text" value="{{ $conditions->{'Password (PIN)'} }}" name="pin" class="form-control @error('name') is-invalid @enderror" aria-label="email">--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                 </div>
                 <button type="submit" class="btn btn-primary float-end">{{ __('Save') }}</button>
             </form>
