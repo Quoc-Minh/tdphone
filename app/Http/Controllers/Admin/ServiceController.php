@@ -68,9 +68,10 @@ class ServiceController extends Controller
                 'madanhmuc' => $request->category
             ]);
 
-            $components = Dichvu::find($request->components);
 
             $service->save();
+
+            $components = Linhkien::find($request->components);
             $service->linhkien()->attach($components);
 
             if ($request->hasFile('thumbnail')) {
