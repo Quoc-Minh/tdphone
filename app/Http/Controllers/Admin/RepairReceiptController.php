@@ -8,6 +8,7 @@ use App\Models\Linhkien;
 use App\Models\Phieusua;
 use App\Models\PhieusuaLinhkien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -58,13 +59,14 @@ class RepairReceiptController extends Controller
 
             $receipt->save();
 
-            $collection = new Collection();
+            $arr = new Arr();
             foreach ($receipt->phieunhan->dichvu as $service) {
                 foreach ($service->linhkien as $component) {
-                    $collection->push($component);
+                    $arr->push($component);
                 }
             }
-            $receipt->linhkien()->attach($collection);
+            $components = Linhkien::find($arr);
+            $receipt->linhkien()->attach($components);
 
             DB::commit();
         } catch (\Exception $e) {
