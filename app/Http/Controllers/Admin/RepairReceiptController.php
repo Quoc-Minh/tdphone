@@ -59,10 +59,10 @@ class RepairReceiptController extends Controller
 
             $receipt->save();
 
-            $arr = new Arr();
+            $arr = array();
             foreach ($receipt->phieunhan->dichvu as $service) {
                 foreach ($service->linhkien as $component) {
-                    $arr->push($component);
+                    array_push($arr, $component->id);
                 }
             }
             $components = Linhkien::find($arr);
