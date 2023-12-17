@@ -297,9 +297,10 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="{{ route('admin.receipts') }}">{{ __('List of receipt') }}</a>
+                                <a class="dropdown-item" href="{{ route('admin.receive-receipts') }}">{{ __('List of receive receipt') }}</a>
+                                <a class="dropdown-item" href="{{ route('admin.repair-receipts') }}">{{ __('List of repair receipt') }}</a>
                                 @can('Tạo phiếu')
-                                    <a class="dropdown-item" href="{{ route('admin.receipts.create') }}">{{ __('Add receipt') }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.receive-receipts.create') }}">{{ __('Add receive receipt') }}</a>
                                 @endcan
                             </div>
                         </div>
@@ -320,10 +321,7 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="{{ route('admin.receipts') }}">{{ __('List of order') }}</a>
-                                @can('Tạo phiếu')
-                                    <a class="dropdown-item" href="{{ route('admin.receipts.create') }}">{{ __('Add order') }}</a>
-                                @endcan
+                                <a class="dropdown-item" href="{{ route('admin.orders') }}">{{ __('List of order') }}</a>
                             </div>
                         </div>
                     </div>

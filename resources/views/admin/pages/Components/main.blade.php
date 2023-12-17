@@ -51,6 +51,12 @@
                                             <button class="table-sort" data-sort="sort-price">{{ __('Price') }}</button>
                                         </th>
                                         <th>
+                                            <button class="table-sort" data-sort="sort-quantity">{{ __('Quantity') }}</button>
+                                        </th>
+                                        <th>
+                                            <button class="table-sort" data-sort="sort-status">{{ __('Status') }}</button>
+                                        </th>
+                                        <th>
                                             <button class="table-sort" data-sort="sort-desc">{{ __('Description') }}</button>
                                         </th>
                                         <!-- <th><button class="table-sort" data-sort="sort-created">{{ __('created_at') }}</button></th>
@@ -65,6 +71,27 @@
                                             <td class="sort-number">{{ $key+1 }}</td>
                                             <td class="sort-name">{{ $component->ten }}</td>
                                             <td class="sort-price">{{ $component->gia }}</td>
+                                            <td class="sort-price">{{ $component->soluong }}</td>
+                                            <td class="sort-price">
+                                                @switch($component->trangthai)
+                                                    @case(0)
+                                                        <span class="badge bg-dark me-1"></span>
+                                                        {{ __('stop operating') }}
+                                                        @break
+                                                    @case(1)
+                                                        <span class="badge bg-primary me-1"></span>
+                                                        {{ __('in stock') }}
+                                                        @break
+                                                    @case(2)
+                                                        <span class="badge bg-danger me-1"></span>
+                                                        {{ __('out of stock') }}
+                                                        @break
+                                                    @default
+                                                        <span class="badge bg-dark me-1"></span>
+                                                        {{ __('stop operating') }}
+                                                        @break
+                                                @endswitch
+                                            </td>
                                             <td class="sort-desc">{{ $component->mota }}</td>
                                             <!-- <td class="sort-created" data-date="{{ strtotime($component->created_at) }}">{{ $component->created_at }}</td>
                                                  <td class="sort-updated" data-date="{{ strtotime($component->updated_at) }}">{{ $component->updated_at }}</td> -->

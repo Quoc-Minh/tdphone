@@ -9,7 +9,7 @@
                     <h2 class="page-title text-uppercase">
                         {{ __('Receipts') }}
                         @can('thêm phiếu')
-                            <a class="btn btn-primary ms-auto" href="{{ route('admin.receipts.create') }}">
+                            <a class="btn btn-primary ms-auto" href="{{ route('admin.receive-receipts.create') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                      stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -48,25 +48,25 @@
                                             <button class="table-sort" data-sort="sort-id">{{ __('receipt code') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-customer">{{ __('Customer') }}</button>
+                                            <button class="table-sort" data-sort="sort-name">{{ __('Customer') }}</button>
                                         </th>
                                         <th>
                                             <button class="table-sort" data-sort="sort-phonenumber">{{ __('phone number') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-smartphone">{{ __('phone type') }}</button>
+                                            <button class="table-sort" data-sort="sort-phonetype">{{ __('phone type') }}</button>
                                         </th>
                                         <th>
                                             <button class="table-sort">{{ __('imei') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-date">{{ __('receive time / appointment time') }}</button>
+                                            <button class="table-sort" data-sort="sort-imei">{{ __('receive time') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-date">{{ __('repaired time / return time') }}</button>
+                                            <button class="table-sort" data-sort="sort-time">{{ __('appointment time') }}</button>
                                         </th>
                                         <th>
-                                            <button class="table-sort" data-sort="sort-receive">{{ __('status') }}</button>
+                                            <button class="table-sort" data-sort="sort-time">{{ __('status') }}</button>
                                         </th>
                                         <th></th>
                                         <th></th>
@@ -77,14 +77,14 @@
                                         <tr>
                                             <td class="sort-number">{{ $key+1 }}</td>
                                             <td class="sort-id">{{ $receipt->id }}</td>
-                                            <td class="sort-receptionist">{{ $receipt->tenkhachhang }}</td>
-                                            <td class="sort-role">{{ $receipt->sdtkhachhang }}</td>
-                                            <td class="sort-email">{{ $receipt->loaimay }}</td>
-                                            <td class="sort-phone">{{ $receipt->imei }}</td>
-                                            <td class="sort-address">{{ $receipt->thoigiannhan }} <br> {{ $receipt->thoigianhentra }}</td>
-                                            <td class="sort-address">{{ $receipt->thoigiansuaxong }} <br> {{ $receipt->thoigiantra }}</td>
-                                            <td class="sort-address">
-                                                @switch($receipt->nhanvien->last()->xlphieu->trangthai)
+                                            <td class="sort-name">{{ $receipt->tenkhachhang }}</td>
+                                            <td class="sort-phonenumber">{{ $receipt->sdtkhachhang }}</td>
+                                            <td class="sort-phonetype">{{ $receipt->loaimay }}</td>
+                                            <td class="sort-imei">{{ $receipt->imei }}</td>
+                                            <td class="sort-time">{{ $receipt->thoigiannhan }}</td>
+                                            <td class="sort-time">{{ $receipt->thoigianhentra }}</td>
+                                            <td class="sort-status">
+                                                @switch($receipt->trangthai)
                                                     @case(0)
                                                         <span class="badge bg-blue me-1"></span>
                                                         {{ __('Received') }}
@@ -107,17 +107,17 @@
                               <td class="sort-updated" data-date="{{ strtotime($receipt->updated_at) }}">{{ $receipt->updated_at }}</td> -->
                                             @can('Thêm phiếu')
                                                 <td>
-                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.receipts.edit', ['id' => $receipt->id]) }}">{{ __('Edit') }}</a>
+                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.receive-receipts.edit', ['id' => $receipt->id]) }}">{{ __('Edit') }}</a>
                                                 </td>
                                             @endcan
                                             @can('Xóa phiếu')
                                                 <td>
-                                                    <a class="btn btn-ghost-danger" href="{{ route('admin.receipts.delete', ['id' => $receipt->id]) }}"
+                                                    <a class="btn btn-ghost-danger" href="{{ route('admin.receive-receipts.delete', ['id' => $receipt->id]) }}"
                                                        data-confirm-delete="true">{{ __('Delete') }}</a>
                                                 </td>
                                             @endcan
                                             <td>
-                                                <a class="link link-primary" href="{{ route('admin.receipts.show', ['id' => $receipt->id]) }}">
+                                                <a class="link link-primary" href="{{ route('admin.receive-receipts.show', ['id' => $receipt->id]) }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                                                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -149,7 +149,7 @@
             const list = new List('table-roles', {
                 sortClass: 'table-sort',
                 listClass: 'table-tbody',
-                valueNames: ['sort-number', 'sort-id', 'sort-name', 'sort-role', 'sort-email', 'sort-phone', 'sort-address', {
+                valueNames: ['sort-number', 'sort-id', 'sort-name', 'sort-phonenumber', 'sort-phonetype', 'sort-imei', 'sort-time', {
                     attr: 'data-date',
                     name: 'sort-date'
                 }]

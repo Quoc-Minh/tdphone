@@ -55,8 +55,8 @@ class Nhanvien extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function phieu()
+    public function phieunhan()
     {
-        return $this->belongsToMany(Phieu::class, 'xuliphieu', 'manv', 'maphieu')->as('xuliphieu')->withPivot(['ghichu', 'trangthai', 'updated_at']);
+        return $this->hasMany(Phieunhan::class, 'nguoinhan');
     }
 }

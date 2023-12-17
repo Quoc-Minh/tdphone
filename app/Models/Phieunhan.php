@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Phieu extends Model
+class Phieunhan extends Model
 {
     use HasFactory;
 
-    protected $table = 'phieu';
+    protected $table = 'phieunhan';
 
     public $timestamps = false;
 
@@ -22,20 +22,21 @@ class Phieu extends Model
         'ghichu',
         'tinhtrangmay',
         'thoigianhentra',
+        'nguoinhan'
     ];
 
     public function nhanvien()
     {
-        return $this->belongsToMany(Nhanvien::class, 'xuliphieu', 'maphieu', 'manv')->as('xlphieu')->withPivot(['ghichu', 'trangthai', 'updated_at']);
+        return $this->belongsTo(Nhanvien::class, 'nguoinhan');
     }
 
     public function dichvu()
     {
-        return $this->belongsToMany(Dichvu::class, 'phieu_dichvu', 'maphieu', 'madv');
+        return $this->belongsToMany(Dichvu::class, 'phieunhan_dichvu', 'maphieu', 'madv');
     }
 
-    public function xlphieu()
+    public function phieusua()
     {
-        return $this->hasMany(Xuliphieu::class, 'maphieu', 'id');
+        return $this->hasOne(Phieusua::class, 'maphieunhan', 'id');
     }
 }

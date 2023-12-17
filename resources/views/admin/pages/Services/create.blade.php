@@ -46,6 +46,14 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label">{{ __('Components') }}</label>
+                                    <select class="form-select" id="select-components" multiple aria-label="components" name="components[]">
+                                        @foreach($components as $key => $component)
+                                            <option value="{{$component->id}}">{{ $component->ten }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label">{{ __('Service price') }}</label>
                                     <input type="number" min="0" class="form-control @error('servicePrice') is-invalid @enderror" aria-label="servicePrice" name="servicePrice"
                                            placeholder="Enter service price...">
@@ -90,6 +98,7 @@
 
 @section('Libs')
     <script src="{{ asset('assets/admin/dist/libs/list.js/dist/list.js?1684106062') }}" defer></script>
+    <script src="{{ asset('assets/admin/dist/libs/tom-select/dist/js/tom-select.base.min.js?1684106062') }}" defer></script>
 @endsection
 
 @section('js')
@@ -107,5 +116,31 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
+    </script>
+    <script>
+        // @formatter:off
+        document.addEventListener("DOMContentLoaded", function () {
+            var el;
+            window.TomSelect && (new TomSelect(el = document.getElementById('select-components'), {
+                copyClassesToDropdown: false,
+                dropdownParent: 'body',
+                controlInput: '<input>',
+                render:{
+                    item: function(data,escape) {
+                        if( data.customProperties ){
+                            return '<div><span class="dropdown-item-indicator">' + data.customProperties + '</span>' + escape(data.text) + '</div>';
+                        }
+                        return '<div>' + escape(data.text) + '</div>';
+                    },
+                    option: function(data,escape){
+                        if( data.customProperties ){
+                            return '<div><span class="dropdown-item-indicator">' + data.customProperties + '</span>' + escape(data.text) + '</div>';
+                        }
+                        return '<div>' + escape(data.text) + '</div>';
+                    },
+                },
+            }));
+        });
+        // @formatter:on
     </script>
 @endsection

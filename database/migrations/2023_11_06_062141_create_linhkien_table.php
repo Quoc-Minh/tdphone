@@ -20,6 +20,15 @@ return new class extends Migration {
             $table->integer('trangthai')->comment('0: ngung hoat dong; 1: con hang; 2: het hang')->default(0);
             $table->timestamps();
         });
+
+        Schema::create('linhkien_dichvu', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('madv')->unsigned()->comment('mã dịch vụ');
+            $table->foreign('madv')->references('id')->on('dichvu')->onDelete('cascade');
+            $table->bigInteger('malk')->unsigned()->comment('mã linh kiện');
+            $table->foreign('malk')->references('id')->on('linhkien')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,5 +37,6 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::dropIfExists('linhkien');
+        Schema::dropIfExists('linhkien_dichvu');
     }
 };

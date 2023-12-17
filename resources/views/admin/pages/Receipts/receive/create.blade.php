@@ -21,7 +21,7 @@
     <!-- Page body -->
     <div class="page-body">
         <div class="container-xl">
-            <form action="{{ route('admin.receipts.store') }}" method="POST">
+            <form action="{{ route('admin.receive-receipts.store') }}" method="POST">
                 @csrf
                 <div class="row row-cards">
                     <div class="col-6">
@@ -68,6 +68,10 @@
                                 <div class="mb-3">
                                     <label class="form-label required">{{ __('IMEI') }}</label>
                                     <input type="text" class="form-control @error('imei') is-invalid @enderror" aria-label="imei" name="imei" placeholder="Enter imei...">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required">{{ __('Phone conditions') }}</label>
+                                    <input type="text" class="form-control @error('conditions') is-invalid @enderror" aria-label="conditions" name="conditions" placeholder="Enter conditions...">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label required">{{ __('Estimated time to return the device') }}</label>
@@ -194,7 +198,6 @@
 
 @section('Libs')
     <script src="{{ asset('assets/admin/dist/libs/list.js/dist/list.js?1684106062') }}" defer></script>
-    {{--    <script src="{{ asset('assets/admin/dist/libs/litepicker/dist/litepicker.js?1684106062') }}" defer></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
     <script src="{{ asset('assets/admin/dist/libs/tom-select/dist/js/tom-select.base.min.js?1684106062') }}" defer></script>
 @endsection
@@ -238,22 +241,6 @@
         });
         // @formatter:on
     </script>
-    {{--    <script>--}}
-    {{--        // @formatter:off--}}
-{{--        document.addEventListener("DOMContentLoaded", function () {--}}
-{{--            window.Litepicker && (new Litepicker({--}}
-{{--                element: document.getElementById('datepicker-icon'),--}}
-{{--                buttonText: {--}}
-{{--                    previousMonth: `<!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->--}}
-{{--                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>`,--}}
-{{--                    nextMonth: `<!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->--}}
-{{--                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>`,--}}
-{{--                },--}}
-{{--                minDate: Date()--}}
-{{--            }));--}}
-{{--        });--}}
-{{--        // @formatter:on--}}
-    {{--    </script>--}}
     <script>
         const picker = new easepick.create({
             element: "#datepicker-icon",

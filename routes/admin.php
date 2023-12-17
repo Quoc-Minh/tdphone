@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ReceiptController;
+use App\Http\Controllers\Admin\RepairReceiptController;
+use App\Http\Controllers\Admin\ReceiveReceiptController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ComponentController;
 use App\Http\Controllers\Admin\EmployeeController;
@@ -48,6 +50,16 @@ Route::middleware('localization')->group(function () {
         Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('admin.password.post');
         Route::get('/profile', [FrontendController::class, 'profile'])->name('admin.profile');
 
+        //Order
+        Route::get('/orders/{id}/status', [OrderController::class, 'status'])->name('admin.orders.status');
+        Route::get('/orders/{id}/delete', [OrderController::class, 'destroy'])->name('admin.orders.delete');
+        Route::post('/orders/{id}/update', [OrderController::class, 'update'])->name('admin.orders.update');
+        Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('admin.orders.edit');
+        Route::get('/orders/{id}/show', [OrderController::class, 'show'])->name('admin.orders.show');
+        Route::post('/orders/create', [OrderController::class, 'store'])->name('admin.orders.store');
+        Route::get('/orders/create', [OrderController::class, 'create'])->name('admin.orders.create');
+        Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders');
+
         //Appointments
         Route::get('/appointments/{id}/delete', [AppointmentController::class, 'destroy'])->name('admin.appointments.delete');
         Route::post('/appointments/{id}/update', [AppointmentController::class, 'update'])->name('admin.appointments.update');
@@ -56,18 +68,29 @@ Route::middleware('localization')->group(function () {
         Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('admin.appointments.create');
         Route::get('/appointments', [AppointmentController::class, 'index'])->name('admin.appointments');
 
-        //Receipts
-        Route::get('/receipts/{id}/issueinvoice', [ReceiptController::class, 'issueInvoice'])->name('admin.receipts.issueinvoice');
-        Route::get('/receipts/{id}/repaircompleted', [ReceiptController::class, 'repairCompleted'])->name('admin.receipts.repaircompleted');
-        Route::get('/receipts/{id}/repairstart', [ReceiptController::class, 'repairStart'])->name('admin.receipts.repairstart');
-        Route::get('/receipts/{id}/step', [ReceiptController::class, 'step'])->name('admin.receipts.step');
-        Route::get('/receipts/{id}/delete', [ReceiptController::class, 'destroy'])->name('admin.receipts.delete');
-        Route::post('/receipts/{id}/update', [ReceiptController::class, 'update'])->name('admin.receipts.update');
-        Route::get('/receipts/{id}/edit', [ReceiptController::class, 'edit'])->name('admin.receipts.edit');
-        Route::get('/receipts/{id}/show', [ReceiptController::class, 'show'])->name('admin.receipts.show');
-        Route::post('/receipts/create', [ReceiptController::class, 'store'])->name('admin.receipts.store');
-        Route::get('/receipts/create', [ReceiptController::class, 'create'])->name('admin.receipts.create');
-        Route::get('/receipts', [ReceiptController::class, 'index'])->name('admin.receipts');
+        //Repair Receipts
+        Route::post('/repair-receipts/{id}/components', [RepairReceiptController::class, 'components'])->name('admin.repair-receipts.components.add');
+        Route::get('/repair-receipts/{id}/status', [RepairReceiptController::class, 'repaired'])->name('admin.repair-receipts.status.repaired');
+        Route::get('/repair-receipts/{id}/delete', [RepairReceiptController::class, 'destroy'])->name('admin.repair-receipts.delete');
+        Route::post('/repair-receipts/{id}/update', [RepairReceiptController::class, 'update'])->name('admin.repair-receipts.update');
+        Route::get('/repair-receipts/{id}/edit', [RepairReceiptController::class, 'edit'])->name('admin.repair-receipts.edit');
+        Route::get('/repair-receipts/{id}/show', [RepairReceiptController::class, 'show'])->name('admin.repair-receipts.show');
+        Route::post('/repair-receipts/create', [RepairReceiptController::class, 'store'])->name('admin.repair-receipts.store');
+        Route::get('/repair-receipts/create', [RepairReceiptController::class, 'create'])->name('admin.repair-receipts.create');
+        Route::get('/repair-receipts', [RepairReceiptController::class, 'index'])->name('admin.repair-receipts');
+
+        //Receive Receipts
+        Route::get('/receive-receipts/{id}/issueinvoice', [ReceiveReceiptController::class, 'issueInvoice'])->name('admin.receive-receipts.issueinvoice');
+        Route::get('/receive-receipts/{id}/repaircompleted', [ReceiveReceiptController::class, 'repairCompleted'])->name('admin.receive-receipts.repaircompleted');
+        Route::get('/receive-receipts/{id}/repairstart', [ReceiveReceiptController::class, 'repairStart'])->name('admin.receive-receipts.repairstart');
+        Route::get('/receive-receipts/{id}/step', [ReceiveReceiptController::class, 'step'])->name('admin.receive-receipts.step');
+        Route::get('/receive-receipts/{id}/delete', [ReceiveReceiptController::class, 'destroy'])->name('admin.receive-receipts.delete');
+        Route::post('/receive-receipts/{id}/update', [ReceiveReceiptController::class, 'update'])->name('admin.receive-receipts.update');
+        Route::get('/receive-receipts/{id}/edit', [ReceiveReceiptController::class, 'edit'])->name('admin.receive-receipts.edit');
+        Route::get('/receive-receipts/{id}/show', [ReceiveReceiptController::class, 'show'])->name('admin.receive-receipts.show');
+        Route::post('/receive-receipts/create', [ReceiveReceiptController::class, 'store'])->name('admin.receive-receipts.store');
+        Route::get('/receive-receipts/create', [ReceiveReceiptController::class, 'create'])->name('admin.receive-receipts.create');
+        Route::get('/receive-receipts', [ReceiveReceiptController::class, 'index'])->name('admin.receive-receipts');
 
         //Components
         Route::get('/components/{id}/delete', [ComponentController::class, 'destroy'])->name('admin.components.delete');

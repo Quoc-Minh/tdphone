@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Danhmuc;
 use App\Models\Dichvu;
+use App\Models\Linhkien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -29,8 +30,10 @@ class ServiceController extends Controller
     public function create()
     {
         $categories = Danhmuc::all();
+        $components = Linhkien::all();
         return view('admin.pages.services.create', [
-            'categories' => $categories
+            'categories' => $categories,
+            'components' => $components
         ]);
     }
 
@@ -64,6 +67,9 @@ class ServiceController extends Controller
                 'mota' => $request->description,
                 'madanhmuc' => $request->category
             ]);
+
+            $components = Dichvu::find($request->components);
+            $service->linhkien()->attach($components);
 
             $service->save();
 //        dd(!$request->hasFile('thumbnail'));

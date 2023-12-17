@@ -24,11 +24,16 @@ class Dichvu extends Model
 
     public function phieu()
     {
-        return $this->belongsToMany(Phieu::class, 'phieu_dichvu', 'madv', 'maphieu');
+        return $this->belongsToMany(Phieunhan::class, 'phieu_dichvu', 'madv', 'maphieu');
     }
 
     public function danhmuc()
     {
         return $this->belongsTo(Danhmuc::class, 'madanhmuc', 'id');
+    }
+
+    public function linhkien()
+    {
+        return $this->belongsToMany(Linhkien::class, 'linhkien_dichvu', 'malk', 'madv');
     }
 }
