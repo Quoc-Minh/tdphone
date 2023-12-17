@@ -57,8 +57,6 @@ class RepairReceiptController extends Controller
 
             $receipt->save();
 
-            $receipt->dichvu()->attach($receipt->phieunhan->dichvu);
-
             $receipt->linhkien()->attach($receipt->phieunhan->dichvu->linhkien);
 
             DB::commit();
