@@ -27,7 +27,6 @@ return new class extends Migration {
             $table->foreign('madv')->references('id')->on('dichvu')->onDelete('cascade');
             $table->bigInteger('malk')->unsigned()->comment('mã linh kiện');
             $table->foreign('malk')->references('id')->on('linhkien')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

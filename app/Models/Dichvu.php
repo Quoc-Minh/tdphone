@@ -34,6 +34,6 @@ class Dichvu extends Model
 
     public function linhkien()
     {
-        return $this->belongsToMany(Linhkien::class, 'linhkien_dichvu', 'malk', 'madv');
+        return $this->belongsToMany(Linhkien::class, 'linhkien_dichvu', 'madv', 'malk');
     }
 }
