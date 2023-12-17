@@ -69,10 +69,10 @@ class ServiceController extends Controller
             ]);
 
             $components = Dichvu::find($request->components);
-            $service->linhkien()->attach($components);
 
             $service->save();
-//        dd(!$request->hasFile('thumbnail'));
+            $service->linhkien()->attach($components);
+
             if ($request->hasFile('thumbnail')) {
                 $path = Storage::putFileAs(
                     '/assets/admin/images/services', $request->file('thumbnail'), $service->id . '10.webp'
