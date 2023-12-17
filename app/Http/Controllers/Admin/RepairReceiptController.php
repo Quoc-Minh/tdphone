@@ -45,7 +45,7 @@ class RepairReceiptController extends Controller
      */
     public function store(Request $request)
     {
-//        try {
+        try {
             DB::beginTransaction();
 
             $receipt = new Phieusua([
@@ -57,8 +57,7 @@ class RepairReceiptController extends Controller
 
             $receipt->save();
 
-            foreach ($receipt->phieunhan->dichvu as $service)
-            {
+            foreach ($receipt->phieunhan->dichvu as $service) {
                 $receipt->linhkien()->attach($service->linhkien);
             }
 
