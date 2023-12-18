@@ -104,8 +104,12 @@ class ServiceController extends Controller
     public function edit(string $id)
     {
         $service = Dichvu::find($id);
+        $categories = Danhmuc::all();
+        $components = Linhkien::all();
         return view('admin.pages.services.edit', [
-            'service' => $service
+            'service' => $service,
+            'categories' => $categories,
+            'components' => $components
         ]);
     }
 
@@ -161,10 +165,6 @@ class ServiceController extends Controller
     public function destroy(string $id)
     {
         $service = Dichvu::find($id);
-
-        if ($service->phieu->count() > 0) {
-            return redirect()->back()->with('toast_error', __("Receipt exist, can't delete"));
-        }
 
         if (!$service) {
             return redirect()->back()->with('toast_error', __('Not found service.'));

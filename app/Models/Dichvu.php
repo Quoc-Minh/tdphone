@@ -22,9 +22,9 @@ class Dichvu extends Model
         'madanhmuc'
     ];
 
-    public function phieu()
+    public function phieunhan()
     {
-        return $this->belongsToMany(Phieunhan::class, 'phieu_dichvu', 'madv', 'maphieu');
+        return $this->belongsToMany(Phieunhan::class, 'phieunhan_dichvu', 'madv', 'maphieu');
     }
 
     public function danhmuc()

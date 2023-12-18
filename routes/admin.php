@@ -70,6 +70,7 @@ Route::middleware('localization')->group(function () {
 
         //Repair Receipts
         Route::post('/repair-receipts/{id}/components', [RepairReceiptController::class, 'components'])->name('admin.repair-receipts.components.add');
+        Route::post('/repair-receipts/{id}/services', [RepairReceiptController::class, 'services'])->name('admin.repair-receipts.services.add');
         Route::get('/repair-receipts/{id}/status', [RepairReceiptController::class, 'repaired'])->name('admin.repair-receipts.status.repaired');
         Route::get('/repair-receipts/{id}/delete', [RepairReceiptController::class, 'destroy'])->name('admin.repair-receipts.delete');
         Route::post('/repair-receipts/{id}/update', [RepairReceiptController::class, 'update'])->name('admin.repair-receipts.update');

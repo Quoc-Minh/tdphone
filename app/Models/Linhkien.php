@@ -17,4 +17,9 @@ class Linhkien extends Model
         'gia',
         'mota'
     ];
+
+    public function phieusua()
+    {
+        return $this->belongsToMany(Phieusua::class, 'phieusua_linhkien', 'malk', 'maphieu')->withPivot('soluong');
+    }
 }

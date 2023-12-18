@@ -30,7 +30,7 @@
     "Create employee account": "Tạo tài khoản nhân viên",
     "Employees": "Nhân viên",
     "Save": "Lưu",
-    "Create employee": "Tạo nhân viên",
+    "Create employee": "Thêm nhân viên",
     "Add service": "Thêm dịch vụ",
     "Create service": "Tạo dịch vụ",
     "Add component": "Thêm linh kiện",
@@ -158,5 +158,8 @@
     "unpaid": "Chưa thanh toán",
     "paid": "Đã thanh toán",
     "order code": "mã hóa đơn",
-    "change status success": "Đổi trạng thái thành công"
+    "change status success": "Đổi trạng thái thành công",
+    "Add Components": "Thêm linh kiện",
+    "Add Services": "Thêm dịch vụ",
+    "Service already exists.": "Dịch đã tồn tại."
 }

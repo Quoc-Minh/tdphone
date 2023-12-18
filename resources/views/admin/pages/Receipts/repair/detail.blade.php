@@ -16,14 +16,29 @@
                 <!-- Page title actions -->
                 @if($receipt->trangthai == 0)
                     <div class="col-auto ms-auto d-print-none">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-services">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/printer -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-assembly" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path
+                                    d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z"/>
+                                <path
+                                    d="M15.5 9.422c.312 .18 .503 .515 .5 .876v3.277c0 .364 -.197 .7 -.515 .877l-3 1.922a1 1 0 0 1 -.97 0l-3 -1.922a1 1 0 0 1 -.515 -.876v-3.278c0 -.364 .197 -.7 .514 -.877l3 -1.79c.311 -.174 .69 -.174 1 0l3 1.79h-.014z"/>
+                            </svg>
+                            {{ __('Add Services') }}
+                        </button>
+                    </div>
+                    <div class="col-auto ms-auto d-print-none">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-component">
                             <!-- Download SVG icon from http://tabler-icons.io/i/printer -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                 stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-assembly" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2"/>
-                                <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"/>
-                                <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z"/>
+                                <path
+                                    d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z"/>
+                                <path
+                                    d="M15.5 9.422c.312 .18 .503 .515 .5 .876v3.277c0 .364 -.197 .7 -.515 .877l-3 1.922a1 1 0 0 1 -.97 0l-3 -1.922a1 1 0 0 1 -.515 -.876v-3.278c0 -.364 .197 -.7 .514 -.877l3 -1.79c.311 -.174 .69 -.174 1 0l3 1.79h-.014z"/>
                             </svg>
                             {{ __('Add Component') }}
                         </button>
@@ -31,7 +46,7 @@
                 @endif
                 <div class="col-auto ms-auto d-print-none">
                     @if($receipt->trangthai == 0)
-                        <a href="{{ route('admin.repair-receipts.status.repaired', ['id' => $receipt->id]) }}" class="btn btn-primary m-2 float-end d-print-none">{{ __('Repaired') }}</a>
+                        <a href="{{ route('admin.repair-receipts.status.repaired', ['id' => $receipt->id]) }}" class="btn btn-success m-2 float-end d-print-none">{{ __('Repaired') }}</a>
                     @else
                         <form action="{{ route('admin.orders.store') }}" method="POST">
                             @csrf
@@ -173,6 +188,7 @@
             </div>
         </div>
     </div>
+
     {{-- Modal add components --}}
     <div class="modal modal-blur fade" id="modal-component" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -187,6 +203,33 @@
                                 <option value="">{{ __('Choose') }}</option>
                                 @foreach($components as $component)
                                     <option value="{{ $component->id }}">{{ $component->ten }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link link-secondary me-auto" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal add services --}}
+    <div class="modal modal-blur fade" id="modal-services" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form action="{{ route('admin.repair-receipts.services.add', ['id' => $receipt->id]) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="modal-title">{{ __('Add Services') }}</div>
+                        <div class="mb-3">
+                            <label class="form-label required">{{ __('Services') }}</label>
+                            <select type="text" class="form-control @error('service') is-invalid @enderror" name="service" aria-label="service">
+                                <option value="">{{ __('Choose') }}</option>
+                                @foreach($services as $service)
+                                    <option value="{{ $service->id }}">{{ $service->ten }}</option>
                                 @endforeach
                             </select>
                         </div>

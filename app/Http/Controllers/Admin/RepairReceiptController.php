@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Dichvu;
 use App\Models\Linhkien;
+use App\Models\PhieunhanDichvu;
 use App\Models\Phieusua;
 use App\Models\PhieusuaLinhkien;
 use Illuminate\Http\Request;
@@ -59,14 +60,14 @@ class RepairReceiptController extends Controller
 
             $receipt->save();
 
-            $arr = array();
             foreach ($receipt->phieunhan->dichvu as $service) {
                 foreach ($service->linhkien as $component) {
-                    array_push($arr, $component->id);
+                    PhieusuaLinhkien::create([
+                        'maphieu' => $receipt->id,
+                        'malk' => $component->id
+                    ]);
                 }
             }
-            $components = Linhkien::find($arr);
-            $receipt->linhkien()->attach($components);
 
             DB::commit();
         } catch (\Exception $e) {
@@ -84,9 +85,11 @@ class RepairReceiptController extends Controller
     {
         $receipt = Phieusua::find($id);
         $components = Linhkien::all();
+        $services = Dichvu::all();
         return view('admin.pages.Receipts.repair.detail', [
             'receipt' => $receipt,
-            'components' => $components
+            'components' => $components,
+            'services' => $services
         ]);
     }
 
@@ -120,10 +123,6 @@ class RepairReceiptController extends Controller
     {
         $receipt = Phieusua::find($id);
 
-        if ($receipt->dichvu->count() > 0) {
-            return redirect()->back()->with('toast_error', __("Service exist, can't delete"));
-        }
-
         if (!$receipt) {
             return redirect()->back()->with('toast_error', __('Not found receipt.'));
         }
@@ -148,11 +147,36 @@ class RepairReceiptController extends Controller
 
     public function components(string $id, Request $request)
     {
+
         $receipt = PhieusuaLinhkien::where('maphieu', $id)->where('malk', $request->component)->first();
+        if ($receipt) {
+            $receipt->soluong++;
+            $receipt->save();
+        } else {
+            PhieusuaLinhkien::create([
+                'maphieu' => $id,
+                'malk' => $request->component
+            ]);
+        }
 
-        $receipt->soluong++;
 
-        $receipt->save();
+        return redirect()->back()->with('toast_success', __('Add component success.'));
+    }
+
+    public function services(string $id, Request $request)
+    {
+        $repair = Phieusua::find($id);
+        $receipt = PhieunhanDichvu::where('maphieu', $repair->phieunhan->id)->where('madv', $request->service)->first();
+
+        if (!$receipt) {
+            PhieunhanDichvu::create([
+                'maphieu' => $id,
+                'madv' => $request->component
+            ]);
+        } else {
+            return redirect()->back()->with('toast_warning', __('Service already exists.'));
+        }
+
 
         return redirect()->back()->with('toast_success', __('Add component success.'));
     }

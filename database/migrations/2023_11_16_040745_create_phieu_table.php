@@ -40,7 +40,7 @@ return new class extends Migration {
         Schema::create('phieusua_linhkien', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('maphieu')->unsigned()->comment('mã phiếu sửa');
-            $table->foreign('maphieu')->references('id')->on('phieunhan')->onDelete('cascade');
+            $table->foreign('maphieu')->references('id')->on('phieusua')->onDelete('cascade');
             $table->bigInteger('malk')->unsigned()->comment('mã linh kiện');
             $table->foreign('malk')->references('id')->on('linhkien')->onDelete('cascade');
             $table->integer('soluong')->default(1);
