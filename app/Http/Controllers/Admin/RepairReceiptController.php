@@ -141,6 +141,7 @@ class RepairReceiptController extends Controller
         $receipt = Phieusua::find($id);
 
         $receipt->trangthai = 1;
+        $receipt->thoigiansuaxong = date('y-m-d H:i:s');
         $receipt->save();
         return redirect()->back()->with('success', __('Repaired.'));
     }
