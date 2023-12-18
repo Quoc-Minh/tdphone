@@ -171,7 +171,7 @@ class RepairReceiptController extends Controller
         if (!$receipt) {
             PhieunhanDichvu::create([
                 'maphieu' => $id,
-                'madv' => $request->component
+                'madv' => $request->service
             ]);
         } else {
             return redirect()->back()->with('toast_warning', __('Service already exists.'));
