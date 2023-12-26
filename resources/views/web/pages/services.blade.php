@@ -15,15 +15,16 @@
             </div>
             <div class="row mb-5">
                 <div class="d-flex bg-light w-100 p-5 rounded">
+                    <a class="btn btn-outline-dark btn-lg mr-3" href="{{ route('services') }}">{{ __('All') }}</a>
                     @foreach($categories->where('danhmuccha', null) as $key => $category)
                         <div class="dropdown mr-3 shadow-sm">
-                            <button class="btn btn-outline-dark btn-lg" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <a href="{{ route('services').'?category='.$category->id }}" class="btn btn-outline-dark btn-lg">
                                 {{ $category->ten }}
-                            </button>
+                            </a>
                             @if($categories->where('danhmuccha', $category->id)->count() > 0)
                                 <div class="dropdown-menu shadow-sm rounded">
                                     @foreach($categories->where('danhmuccha', $category->id) as $key => $category2)
-                                        <a class="dropdown-item" href="#">{{ $category2->ten }}</a>
+                                        <a class="dropdown-item" href="{{ route('services').'?category='.$category->id }}">{{ $category2->ten }}</a>
                                     @endforeach
                                 </div>
                             @endif

@@ -11,9 +11,7 @@
                     <div class="row no-gutters slider-text align-items-center justify-content-start">
                         <div class="col-md-6 ftco-animate">
                             <div class="text w-100">
-                                <h2>We are best car repair services</h2>
-                                <h1 class="mb-4">Make your car last longer</h1>
-                                <p><a href="#" class="btn btn-primary">Book an appointment</a></p>
+                                {{--                                <p><a href="{{ route('booking') }}" class="btn btn-primary">{{ __('Booking') }}</a></p>--}}
                             </div>
                         </div>
                     </div>
@@ -26,9 +24,7 @@
                     <div class="row no-gutters slider-text align-items-center justify-content-start">
                         <div class="col-md-6 ftco-animate">
                             <div class="text w-100">
-                                <h2>We care about your car</h2>
-                                <h1 class="mb-4">It's time to come to repair your car</h1>
-                                <p><a href="#" class="btn btn-primary">Book an appointment</a></p>
+                                {{--                                <p><a href="{{ route('booking') }}" class="btn btn-primary">{{ __('Booking') }}</a></p>--}}
                             </div>
                         </div>
                     </div>
@@ -45,9 +41,9 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <i class="flaticon-repair"></i>
                         </div>
-                        <h2 class="mb-0">Are you ready? <span>Let's repair it now!</span></h2>
+                        <h2 class="mb-0">{{ __('Is your phone broken?') }} <span>{{ __("Let's repair it now!") }}</span></h2>
                     </div>
-                    <a href="#" class="bg-primary btn-custom d-flex align-items-center"><span>Book an Appointment</span></a>
+                    <a href="{{ route('booking') }}" class="bg-primary btn-custom d-flex align-items-center"><span>{{ __('Booking') }}</span></a>
                 </div>
             </div>
         </div>
@@ -57,8 +53,8 @@
         <div class="container">
             <div class="row justify-content-center pb-5 mb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
-                    <span class="subheading">We offer Services</span>
-                    <h2>Our car services</h2>
+                    <span class="subheading">{{ __('We offer Services') }}</span>
+                    <h2>{{ __('repair phone services') }}</h2>
                 </div>
             </div>
             <div class="row">
@@ -68,7 +64,7 @@
                             <span class="flaticon-car-service"></span>
                         </div>
                         <div class="media-body pl-3">
-                            <h3 class="heading">Oil change</h3>
+                            <h3 class="heading">{{ __('Install software') }}</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                             <p><a href="#" class="btn-custom">Read more</a></p>
                         </div>
@@ -78,7 +74,7 @@
                             <span class="flaticon-tyre"></span>
                         </div>
                         <div class="media-body pl-3">
-                            <h3 class="heading">Tire Change</h3>
+                            <h3 class="heading">{{ __('Touchscreen error') }}</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                             <p><a href="#" class="btn-custom">Read more</a></p>
                         </div>
@@ -91,7 +87,7 @@
                             <span class="flaticon-battery"></span>
                         </div>
                         <div class="media-body pl-3">
-                            <h3 class="heading">Batteries</h3>
+                            <h3 class="heading">{{ __('Batteries') }}</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                             <p><a href="#" class="btn-custom">Read more</a></p>
                         </div>
@@ -101,7 +97,7 @@
                             <span class="flaticon-car-engine"></span>
                         </div>
                         <div class="media-body pl-3">
-                            <h3 class="heading">Engine Repair</h3>
+                            <h3 class="heading">{{ __('Camera repair') }}</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                             <p><a href="#" class="btn-custom">Read more</a></p>
                         </div>
@@ -114,7 +110,7 @@
                             <span class="flaticon-tow-truck"></span>
                         </div>
                         <div class="media-body pl-3">
-                            <h3 class="heading">Tow Truck</h3>
+                            <h3 class="heading">{{ __('Charging error') }}</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                             <p><a href="#" class="btn-custom">Read more</a></p>
                         </div>
@@ -124,7 +120,7 @@
                             <span class="flaticon-repair"></span>
                         </div>
                         <div class="media-body pl-3">
-                            <h3 class="heading">Car Maintenance</h3>
+                            <h3 class="heading">{{ __('Damaged screen') }}</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                             <p><a href="#" class="btn-custom">Read more</a></p>
                         </div>
@@ -140,7 +136,7 @@
                 <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 text-center">
                         <div class="text">
-                            <strong class="number" data-number="45">0</strong>
+                            <strong class="number" data-number="10">0</strong>
                         </div>
                         <div class="text">
                             <span>Years of Experienced</span>
@@ -186,8 +182,8 @@
         <div class="container">
             <div class="row justify-content-center pb-5 mb-3">
                 <div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
-                    <span class="subheading">Testimonies</span>
-                    <h2>Happy Clients &amp; Feedbacks</h2>
+                    <span class="subheading">{{ __('Testimonies') }}</span>
+                    <h2>{{ __('Happy Clients')}} &amp; {{ __('Feedbacks') }}</h2>
                 </div>
             </div>
             <div class="row ftco-animate">
@@ -278,8 +274,8 @@
         <div class="container">
             <div class="row justify-content-center pb-5 mb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
-                    <span class="subheading">News &amp; Blog</span>
-                    <h2>Latest news from our blog</h2>
+                    <span class="subheading">{{ __('News')}} &amp; Blog</span>
+                    <h2>{{ __('Latest news from our blog')}}</h2>
                 </div>
             </div>
             <div class="row d-flex">

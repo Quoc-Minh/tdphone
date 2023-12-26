@@ -3,7 +3,7 @@
         <div class="row mb-5">
             <div class="col-md-6 col-lg">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="logo"><a href="#">Autorepair<span>.</span></a></h2>
+                    <h2 class="logo"><a href="#">TD-Phone<span>.</span></a></h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
                         <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
@@ -14,19 +14,19 @@
             </div>
             <div class="col-md-6 col-lg">
                 <div class="ftco-footer-widget mb-4 ml-md-5">
-                    <h2 class="ftco-heading-2">Services</h2>
+                    <h2 class="ftco-heading-2">{{ __('Services') }}</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Oil Change</a></li>
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Batteries</a></li>
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Tow Truck</a></li>
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Tire Change</a></li>
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Engine Repair</a></li>
+                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>{{ __('Install software') }}</a></li>
+                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>{{ __('Touchscreen errora') }}></li>
+                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>{{ __('Batteries') }}</a></li>
+                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>{{ __('Camera repair') }}</a></li>
+                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>{{ __('Charging error') }}</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-6 col-lg">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Contact information</h2>
+                    <h2 class="ftco-heading-2">{{ __('Contact information') }}</h2>
                     <div class="block-23 mb-3">
                         <ul>
                             <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
@@ -38,17 +38,12 @@
             </div>
             <div class="col-md-6 col-lg">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Business Hours</h2>
+                    <h2 class="ftco-heading-2">{{ __('Business Hours')}}</h2>
                     <div class="opening-hours">
-                        <h4>Opening Days:</h4>
+                        <h4>{{ __('Opening Days')}}:</h4>
                         <p class="pl-3">
-                            <span>Monday – Friday : 9am to 20 pm</span>
-                            <span>Saturday : 9am to 17 pm</span>
-                        </p>
-                        <h4>Vacations:</h4>
-                        <p class="pl-3">
-                            <span>All Sunday Days</span>
-                            <span>All Official Holidays</span>
+                            <span>{{ __('Monday') }} – {{ __('Friday') }} : 9:00 - 20:00</span>
+                            <span>{{ __('Saturday and Sunday') }} : 9:00 - 17:00</span>
                         </p>
                     </div>
                 </div>

@@ -143,6 +143,7 @@ class ServiceController extends Controller
             return redirect()->back()->with('toast_error', __('Not found service.'));
         }
 
+
         $result = $service->update([
             'ten' => $request->name,
             'giadv' => $request->servicePrice,
@@ -151,6 +152,17 @@ class ServiceController extends Controller
             'mota' => $request->description,
             'madanhmuc' => $request->category
         ]);
+
+        $components = Linhkien::find($request->components);
+        $service->linhkien()->detach();
+        $service->linhkien()->attach($components);
+
+        if ($request->hasFile('thumbnail')) {
+            $path = Storage::putFileAs(
+                '/assets/admin/images/services', $request->file('thumbnail'), $service->id . '.webp'
+            );
+            $service->update(['hinh' => $path]);
+        }
 
         if (!$result) {
             return redirect()->route('admin.services')->with('toast_error', __('Update service fail.'));
