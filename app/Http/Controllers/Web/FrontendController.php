@@ -61,8 +61,8 @@ class FrontendController extends Controller
     public function warranty(Request $request)
     {
         $result = Phieusua::join('phieunhan', 'phieunhan.id', '=', 'phieusua.maphieunhan')
-            ->select('phieunhan.loaimay', 'phieunhan.imei', 'phieunhan.thoigianhentra', 'phieusua.trangthai')
-            ->where('sdtkhachhang', $request->phone)
+            ->select('phieunhan.loaimay', 'phieunhan.imei', 'phieunhan.thoigianhentra', 'phieunhan.thoigiannhan', 'phieusua.trangthai')
+            ->where('phieunhan.sdtkhachhang', $request->phone)
             ->get();
         return view('web.pages.warranty', [
             'result' => $result

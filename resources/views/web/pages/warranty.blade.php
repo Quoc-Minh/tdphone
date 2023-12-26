@@ -22,21 +22,38 @@
                 </div>
                 <div class="col-12">
                     <div class="table-responsive pt-3">
-                        <table class="table table-group-divider">
-                            <thead>
+                        <table class="table">
+                            <thead class="thead-dark">
                             <tr class="border">
-                                <td>{{ __('Phone type') }}</td>
-                                <td>{{ __('Imei') }}</td>
-                                <td>{{ __('Status') }}</td>
-                                <td>{{ __('Return appointment date') }}</td>
+                                <th>{{ __('Phone type') }}</th>
+                                <th>{{ __('Imei') }}</th>
+                                <th>{{ __('Status') }}</th>
+                                <th>Ngày nhận</th>
+                                <th>{{ __('Return appointment date') }}</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($result as $item)
-                                <tr>
+                                <tr class="border-bottom">
                                     <td>{{ $item->loaimay }}</td>
                                     <td>{{ $item->imei }}</td>
-                                    <td>{{ $item->trangthai }}</td>
+                                    <td>
+                                        @switch($item->trangthai)
+                                            @case(0)
+                                                <span class="badge bg-blue me-1"></span>
+                                                {{ __('Repairing') }}
+                                                @break
+                                            @case(1)
+                                                <span class="badge bg-yellow me-1"></span>
+                                                {{ __('Repaired') }}
+                                                @break
+                                            @default
+                                                <span class="badge bg-dark me-1"></span>
+                                                {{ __('Completed') }}
+                                                @break
+                                        @endswitch
+                                    </td>
+                                    <td>{{ $item->thoigiannhan }}</td>
                                     <td>{{ $item->thoigianhentra }}</td>
                                 </tr>
                             @endforeach
