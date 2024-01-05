@@ -47,6 +47,7 @@ Route::middleware('localization')->group(function () {
 
     Route::get('/blogs', [FrontendController::class, 'blogs'])->name('blogs');
 
+    Route::get('/services/{id}', [FrontendController::class, 'detail'])->name('services.detail');
     Route::get('/services', [FrontendController::class, 'services'])->name('services');
 
     Route::post('/booking/create', [BookingController::class, 'create'])->name('booking.post');

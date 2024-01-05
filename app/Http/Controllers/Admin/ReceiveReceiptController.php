@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dichvu;
+use App\Models\Lichhen;
 use App\Models\Nhanvien;
 use App\Models\Phieunhan;
 use Illuminate\Http\Request;
@@ -30,12 +31,16 @@ class ReceiveReceiptController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $services = Dichvu::all();
+        if ($request->lichhen_id) {
+            $lichhen = Lichhen::find($request->lichhen_id);
+        }
 
         return view('admin.pages.Receipts.receive.create', [
-            'services' => $services
+            'services' => $services,
+            'lichhen' => $lichhen
         ]);
     }
 

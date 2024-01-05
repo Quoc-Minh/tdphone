@@ -9,7 +9,7 @@ class Helper
         if (!empty($number)) {
             return number_format($number, 0, ',', '.') . " {$suffix}";
         }
-        return null;
+        return "0 {$suffix}";
     }
 
     public static function date_format($date, $located = 'default')

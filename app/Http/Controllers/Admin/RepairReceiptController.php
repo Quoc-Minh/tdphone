@@ -24,10 +24,12 @@ class RepairReceiptController extends Controller
     {
         $repairing = Phieusua::where('nguoisua', Auth::guard('admin')->id())->where('trangthai', 0)->get();
         $repaired = Phieusua::where('nguoisua', Auth::guard('admin')->id())->where('trangthai', 1)->get();
+        $receipts = Phieusua::all();
 
         return view('admin.pages.Receipts.repair.main', [
             'repairing' => $repairing,
-            'repaired' => $repaired
+            'repaired' => $repaired,
+            'receipts' => $receipts
         ]);
     }
 
@@ -144,6 +146,16 @@ class RepairReceiptController extends Controller
         $receipt->thoigiansuaxong = date('y-m-d H:i:s');
         $receipt->save();
         return redirect()->back()->with('success', __('Repaired.'));
+    }
+
+    public function cancel(string $id)
+    {
+        $receipt = Phieusua::find($id);
+
+        $receipt->trangthai = 2;
+        $receipt->thoigiansuaxong = date('y-m-d H:i:s');
+        $receipt->save();
+        return redirect()->back()->with('success', __('Canceled.'));
     }
 
     public function components(string $id, Request $request)

@@ -55,9 +55,10 @@
                                     </tr>
                                     </thead>
                                     <tbody class="table-tbody align-middle">
+                                    @php $i = 1; @endphp
                                     @foreach ($appointments as $key => $appointment)
                                         <tr>
-                                            <td class="sort-number">{{ $key+1 }}</td>
+                                            <td class="sort-number">{{ $i++ }}</td>
                                             <td class="sort-name">{{ $appointment->tenkhachhang }}</td>
                                             <td class="sort-price">{{ $appointment->sodienthoai }}</td>
                                             <td class="sort-price">{{ $appointment->email }}</td>
@@ -67,15 +68,18 @@
                                                  <td class="sort-updated" data-date="{{ strtotime($appointment->updated_at) }}">{{ $appointment->updated_at }}</td> -->
                                             @can('cập nhật dịch vụ')
                                                 <td class="text-center">
-                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.receipts.create', ['id' => $appointment->id]) }}">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-pencil" width="24" height="24" viewBox="0 0 24 24"
-                                                             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                            <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
-                                                            <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/>
-                                                            <path d="M10 18l5 -5a1.414 1.414 0 0 0 -2 -2l-5 5v2h2z"/>
-                                                        </svg>
-                                                    </a>
+                                                    <form action="{{ route('admin.receive-receipts.create')}}" method="GET">
+                                                        <input type="hidden" name="lichhen_id" value="{{$appointment->id}}">
+                                                        <button class="btn btn-ghost-primary" type="submit">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-pencil" width="24" height="24" viewBox="0 0 24 24"
+                                                                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
+                                                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/>
+                                                                <path d="M10 18l5 -5a1.414 1.414 0 0 0 -2 -2l-5 5v2h2z"/>
+                                                            </svg>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             @endcan
                                             @can('Xóa dịch vụ')

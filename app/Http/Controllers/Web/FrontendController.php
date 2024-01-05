@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Danhmuc;
 use App\Models\Dichvu;
+use App\Models\Hoadon;
 use App\Models\NhanVien;
 use App\Models\Phieunhan;
 use App\Models\Phieusua;
@@ -45,6 +46,14 @@ class FrontendController extends Controller
         return view('web.pages.services', [
             'services' => $services,
             'categories' => $categories
+        ]);
+    }
+
+    public function detail(string $id)
+    {
+        $service = Dichvu::find($id);
+        return view('web.pages.detail', [
+            'service' => $service
         ]);
     }
 

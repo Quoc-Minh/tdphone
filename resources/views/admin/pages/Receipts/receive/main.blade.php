@@ -84,24 +84,45 @@
                                             <td class="sort-time">{{ $receipt->thoigiannhan }}</td>
                                             <td class="sort-time">{{ $receipt->thoigianhentra }}</td>
                                             <td class="sort-status">
-                                                @switch($receipt->trangthai)
-                                                    @case(0)
-                                                        <span class="badge bg-blue me-1"></span>
-                                                        {{ __('Received') }}
-                                                        @break
-                                                    @case(1)
-                                                        <span class="badge bg-yellow me-1"></span>
-                                                        {{ __('Fixing') }}
-                                                        @break
-                                                    @case(2)
-                                                        <span class="badge bg-success me-1"></span>
-                                                        {{ __('Fixed') }}
-                                                        @break
-                                                    @default
-                                                        <span class="badge bg-dark me-1"></span>
-                                                        {{ __('Completed') }}
-                                                        @break
-                                                @endswitch
+                                                @if (!$receipt->phieusua)
+                                                    @switch($receipt->trangthai)
+                                                        @case(0)
+                                                            <span class="badge bg-blue me-1"></span>
+                                                            {{ __('Received') }}
+                                                            @break
+                                                        @case(1)
+                                                            <span class="badge bg-yellow me-1"></span>
+                                                            {{ __('Fixing') }}
+                                                            @break
+                                                        @case(2)
+                                                            <span class="badge bg-success me-1"></span>
+                                                            {{ __('Fixed') }}
+                                                            @break
+                                                        @default
+                                                            <span class="badge bg-dark me-1"></span>
+                                                            {{ __('Completed') }}
+                                                            @break
+                                                    @endswitch
+                                                @else
+                                                    @switch($receipt->phieusua->trangthai)
+                                                        @case(0)
+                                                            <span class="badge bg-green me-1"></span>
+                                                            {{ __('Repairing') }}
+                                                            @break
+                                                        @case(1)
+                                                            <span class="badge bg-yellow me-1"></span>
+                                                            {{ __('Repaired') }}
+                                                            @break
+                                                        @case(2)
+                                                            <span class="badge bg-danger me-1"></span>
+                                                            {{ __('Canceled') }}
+                                                            @break
+                                                        @default
+                                                            <span class="badge bg-dark me-1"></span>
+                                                            {{ __('Completed') }}
+                                                            @break
+                                                    @endswitch
+                                                @endif
                                             </td>
                                             <!-- <td class="sort-created" data-date="{{ strtotime($receipt->created_at) }}">{{ $receipt->created_at }}</td>
                               <td class="sort-updated" data-date="{{ strtotime($receipt->updated_at) }}">{{ $receipt->updated_at }}</td> -->

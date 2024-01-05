@@ -47,7 +47,7 @@
                 <div class="col-auto ms-auto d-print-none">
                     @if($receipt->trangthai == 0)
                         <a href="{{ route('admin.repair-receipts.status.repaired', ['id' => $receipt->id]) }}" class="btn btn-success m-2 float-end d-print-none">{{ __('Repaired') }}</a>
-                    @else
+                    @elseif ($receipt->trangthai == 1)
                         <form action="{{ route('admin.orders.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="receiveid" value="{{$receipt->phieunhan->id}}">
@@ -66,8 +66,14 @@
                         </form>
                     @endif
                 </div>
+                @if($receipt->trangthai == 0)
+                    <div class="col-auto ms-auto d-print-none">
+                        <a href="{{ route('admin.repair-receipts.status.cancel', ['id' => $receipt->id]) }}" class="btn btn-danger m-2 float-end d-print-none">
+                            {{ __('Cancel') }}
+                        </a>
+                    </div>
+                @endif
                 <div class="col-auto ms-auto d-print-none">
-
                     <button type="button" class="btn btn-primary" onclick="javascript:window.print();">
                         <!-- Download SVG icon from http://tabler-icons.io/i/printer -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -114,6 +120,7 @@
                             <address>
                                 <b class="me-2">{{ __('Phone type') }}:</b> {{ $receipt->phieunhan->loaimay }}<br>
                                 <b class="me-2">{{ __('IMEI') }}:</b> {{ $receipt->phieunhan->imei }}<br>
+                                <b class="me-2">{{ __('Repairer') }}:</b> {{ $receipt->nhanvien->ten }}<br>
                                 <b class="me-2">{{ __('start repair time') }}:</b>
                                 {{ date('H:i d/m/Y', strtotime($receipt->thoigianbatdau)) }}<br>
                                 <b class="me-2">{{ __('repaired time') }}:</b>

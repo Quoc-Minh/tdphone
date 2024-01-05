@@ -13,7 +13,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Lichhen::all();
+        $appointments = Lichhen::all()->sortByDesc('created_at');
         return view('admin.pages.Appointments.main', [
             'appointments' => $appointments
         ]);
