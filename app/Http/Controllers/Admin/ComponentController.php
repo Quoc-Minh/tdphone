@@ -51,7 +51,7 @@ class ComponentController extends Controller
             'gia' => $request->price,
             'soluong' => $request->quantity,
             'mota' => $request->description,
-            'trangthai' => 0
+            'trangthai' => 1
         ]);
 
         if (!$component) {

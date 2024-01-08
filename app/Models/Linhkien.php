@@ -15,7 +15,8 @@ class Linhkien extends Model
         'ten',
         'soluong',
         'gia',
-        'mota'
+        'mota',
+        'trangthai'
     ];
 
     public function phieusua()
