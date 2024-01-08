@@ -71,8 +71,8 @@ class ServiceController extends Controller
 
             $service->save();
 
-            $components = Linhkien::find($request->components);
-            $service->linhkien()->attach($components);
+//            $components = Linhkien::find($request->components);
+//            $service->linhkien()->attach($components);
 
             if ($request->hasFile('thumbnail')) {
                 $path = Storage::putFileAs(

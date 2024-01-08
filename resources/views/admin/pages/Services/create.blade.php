@@ -45,14 +45,14 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">{{ __('Components') }}</label>
-                                    <select class="form-select" id="select-components" multiple aria-label="components" name="components[]">
-                                        @foreach($components as $key => $component)
-                                            <option value="{{$component->id}}">{{ $component->ten }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                {{--                                <div class="mb-3">--}}
+                                {{--                                    <label class="form-label">{{ __('Components') }}</label>--}}
+                                {{--                                    <select class="form-select" id="select-components" multiple aria-label="components" name="components[]">--}}
+                                {{--                                        @foreach($components as $key => $component)--}}
+                                {{--                                            <option value="{{$component->id}}">{{ $component->ten }}</option>--}}
+                                {{--                                        @endforeach--}}
+                                {{--                                    </select>--}}
+                                {{--                                </div>--}}
                                 <div class="mb-3">
                                     <label class="form-label">{{ __('Service price') }}</label>
                                     <input type="number" min="0" class="form-control @error('servicePrice') is-invalid @enderror" aria-label="servicePrice" name="servicePrice"
