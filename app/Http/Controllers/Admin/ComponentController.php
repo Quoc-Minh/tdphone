@@ -50,7 +50,8 @@ class ComponentController extends Controller
             'ten' => $request->name,
             'gia' => $request->price,
             'soluong' => $request->quantity,
-            'mota' => $request->description
+            'mota' => $request->description,
+            'trangthai' => 1
         ]);
 
         if (!$component) {
