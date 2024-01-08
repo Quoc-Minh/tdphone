@@ -18,6 +18,12 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        //
+        Schema::create('linhkien_dichvu', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('madv')->unsigned()->comment('mã dịch vụ');
+            $table->foreign('madv')->references('id')->on('dichvu')->onDelete('cascade');
+            $table->bigInteger('malk')->unsigned()->comment('mã linh kiện');
+            $table->foreign('malk')->references('id')->on('linhkien')->onDelete('cascade');
+        });
     }
 };

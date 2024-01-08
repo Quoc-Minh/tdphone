@@ -62,14 +62,14 @@ class RepairReceiptController extends Controller
 
             $receipt->save();
 
-            foreach ($receipt->phieunhan->dichvu as $service) {
-                foreach ($service->linhkien as $component) {
-                    PhieusuaLinhkien::create([
-                        'maphieu' => $receipt->id,
-                        'malk' => $component->id
-                    ]);
-                }
-            }
+//            foreach ($receipt->phieunhan->dichvu as $service) {
+//                foreach ($service->linhkien as $component) {
+//                    PhieusuaLinhkien::create([
+//                        'maphieu' => $receipt->id,
+//                        'malk' => $component->id
+//                    ]);
+//                }
+//            }
 
             DB::commit();
         } catch (\Exception $e) {
