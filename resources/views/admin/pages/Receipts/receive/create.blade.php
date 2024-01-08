@@ -33,12 +33,12 @@
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label class="form-label required">{{ __('Name') }}</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$lichhen->tenkhachhang}}" aria-label="name"
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$tenkhachhang}}" aria-label="name"
                                            placeholder="{{ __('Enter name') }}...">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label required">{{ __('Phone number') }}</label>
-                                    <input type="text" class="form-control @error('phone') is-invalid @enderror" aria-label="phone" name="phone" value="{{$lichhen->sodienthoai}}"
+                                    <input type="text" class="form-control @error('phone') is-invalid @enderror" aria-label="phone" name="phone" value="{{$sdtkhachhang}}"
                                            placeholder="Enter phone number...">
                                 </div>
                                 <div class="mb-3">

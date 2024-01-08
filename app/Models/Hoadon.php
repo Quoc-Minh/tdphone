@@ -18,5 +18,7 @@ class Hoadon extends Model
         'loaimay',
         'imei',
         'dichvu',
+        'maps',
+        'manv',
     ];
 }

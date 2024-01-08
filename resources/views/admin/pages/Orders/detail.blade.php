@@ -107,16 +107,19 @@
                                 </tr>
                             @endforeach
                             <tr>
-                                <td colspan="3" class="strong text-end">{{ __('Fix total') }}</td>
-                                <td class="text-end">
+                                <td colspan="2" class="strong text-end"></td>
+                                <td class="text-end text-nowrap">
                                     {{ Helper::currency_format($services->sum('giacong')) }}
+                                </td>
+                                <td class="text-end text-nowrap">
+                                    {{ Helper::currency_format($services->sum('giadv')) }}
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="font-weight-bold text-uppercase text-end">
                                     {{ __ ('Total') }}
                                 </td>
-                                <td class="font-weight-bold text-end">
+                                <td class="font-weight-bold text-end text-nowrap">
                                     {{ Helper::currency_format($services->sum('giacong') + $services->sum('giadv')) }}
                                 </td>
                             </tr>

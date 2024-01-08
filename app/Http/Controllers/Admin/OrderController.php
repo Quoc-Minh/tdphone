@@ -50,6 +50,8 @@ class OrderController extends Controller
                 'diachi' => $receive->diachi,
                 'loaimay' => $receive->loaimay,
                 'imei' => $receive->imei,
+                'maps' => $receive->phieusua->id,
+                'manv' => Auth::guard('admin')->id(),
                 'created_at' => date('y-m-d H:i:s')
             ]);
 

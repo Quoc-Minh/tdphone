@@ -83,7 +83,7 @@
                                             <td class="sort-imei">{{ $receipt->imei }}</td>
                                             <td class="sort-time">{{ $receipt->thoigiannhan }}</td>
                                             <td class="sort-time">{{ $receipt->thoigianhentra }}</td>
-                                            <td class="sort-status">
+                                            <td class="sort-status text-nowrap">
                                                 @if (!$receipt->phieusua)
                                                     @switch($receipt->trangthai)
                                                         @case(0)
@@ -126,11 +126,11 @@
                                             </td>
                                             <!-- <td class="sort-created" data-date="{{ strtotime($receipt->created_at) }}">{{ $receipt->created_at }}</td>
                               <td class="sort-updated" data-date="{{ strtotime($receipt->updated_at) }}">{{ $receipt->updated_at }}</td> -->
-                                            @can('Thêm phiếu')
-                                                <td>
-                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.receive-receipts.edit', ['id' => $receipt->id]) }}">{{ __('Edit') }}</a>
-                                                </td>
-                                            @endcan
+                                            {{--                                            @can('Sửa phiếu')--}}
+                                            {{--                                                <td>--}}
+                                            {{--                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.receive-receipts.edit', ['id' => $receipt->id]) }}">{{ __('Edit') }}</a>--}}
+                                            {{--                                                </td>--}}
+                                            {{--                                            @endcan--}}
                                             @can('Xóa phiếu')
                                                 <td>
                                                     <a class="btn btn-ghost-danger" href="{{ route('admin.receive-receipts.delete', ['id' => $receipt->id]) }}"

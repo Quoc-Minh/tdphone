@@ -34,13 +34,19 @@ class ReceiveReceiptController extends Controller
     public function create(Request $request)
     {
         $services = Dichvu::all();
-        if ($request->lichhen_id) {
-            $lichhen = Lichhen::find($request->lichhen_id);
+        $lichhen = Lichhen::find($request->lichhen_id);
+        if ($lichhen) {
+            $tenkhachhang = $lichhen->tenkhachhang;
+            $sdtkhachhang = $lichhen->sodienthoai;
+        } else {
+            $tenkhachhang = '';
+            $sdtkhachhang = '';
         }
 
         return view('admin.pages.Receipts.receive.create', [
             'services' => $services,
-            'lichhen' => $lichhen
+            'tenkhachhang' => $tenkhachhang,
+            'sdtkhachhang' => $sdtkhachhang
         ]);
     }
 

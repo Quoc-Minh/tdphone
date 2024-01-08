@@ -80,11 +80,11 @@
                                                         @break
                                                 @endswitch
                                             </td>
-                                            @can('Sửa phiếu')
-                                                <td>
-                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.orders.edit', ['id' => $order->id]) }}">{{ __('Edit') }}</a>
-                                                </td>
-                                            @endcan
+                                            {{--                                            @can('Sửa phiếu')--}}
+                                            {{--                                                <td>--}}
+                                            {{--                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.orders.edit', ['id' => $order->id]) }}">{{ __('Edit') }}</a>--}}
+                                            {{--                                                </td>--}}
+                                            {{--                                            @endcan--}}
                                             @can('Xóa phiếu')
                                                 <td>
                                                     <a class="btn btn-ghost-danger" href="{{ route('admin.orders.delete', ['id' => $order->id]) }}"
@@ -169,11 +169,11 @@
                                                         @break
                                                 @endswitch
                                             </td>
-                                            @can('Thêm phiếu')
-                                                <td>
-                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.orders.edit', ['id' => $order->id]) }}">{{ __('Edit') }}</a>
-                                                </td>
-                                            @endcan
+                                            {{--                                            @can('Sửa phiếu')--}}
+                                            {{--                                                <td>--}}
+                                            {{--                                                    <a class="btn btn-ghost-primary" href="{{ route('admin.orders.edit', ['id' => $order->id]) }}">{{ __('Edit') }}</a>--}}
+                                            {{--                                                </td>--}}
+                                            {{--                                            @endcan--}}
                                             @can('Xóa phiếu')
                                                 <td>
                                                     <a class="btn btn-ghost-danger" href="{{ route('admin.orders.delete', ['id' => $order->id]) }}"
